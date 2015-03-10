@@ -1,0 +1,59 @@
+
+# Files #
+#########
+Makefile
+README.md
+TODO.md
+.coveralls.yml
+wct.conf.js
+
+# Directories #
+###############
+build/
+docs/
+examples/
+reports/
+support/
+test/
+benchmark/
+etc/
+
+# Node.js #
+###########
+.npmignore
+/node_modules/
+
+# Bower #
+#########
+/bower/
+.bowerrc
+
+# Logs #
+########
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Temporary files #
+###################
+*~
+
+# Git #
+#######
+.git*
+
+# Utilities #
+#############
+.jshint*
+.travis.yml
+.editorconfig

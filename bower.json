@@ -1,0 +1,41 @@
+{
+	"name": "nodebook",
+	"version": "0.0.0",
+	"description": "",
+	"authors": [
+		{
+			"name": "Athan Reines",
+			"email": "kgryte@gmail.com"
+		}
+	],
+	"main": "",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/kgryte/nodebook"
+	},
+	"keywords": [
+		"polymer",
+		"web component"
+	],
+	"dependencies": {
+		"polymer": "Polymer/polymer#~0.5.4",
+		"polymer-d3": "figure-io/polymer-d3#~0.0.1",
+		"polymer-uuid": "kgryte/polymer-uuid#~0.0.0"
+	},
+	"devDependencies": {
+		"web-component-tester": "Polymer/web-component-tester#~2.2.1"
+	},
+	"ignore": [
+		"test",
+		"node_modules",
+		"bower",
+		"src",
+		"etc",
+		"TODO.md",
+		".*",
+		"Makefile",
+		"package.json",
+		"wct.conf.js"
+	],
+	"license": "MIT"
+}
