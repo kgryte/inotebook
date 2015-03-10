@@ -40,8 +40,8 @@ var config,
 	root,
 	dir;
 
-// Serve from the directory above the current directory to allow loading of sibling dependencies:
-root = path.resolve( __dirname, '../' );
+// Serve from the current directory:
+root = path.resolve( __dirname, './' );
 
 // Set the location of the test suites:
 dir = path.basename( __dirname );
