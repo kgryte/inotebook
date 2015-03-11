@@ -1,9 +1,9 @@
 TODO
 ====
 
-1. update travis.yml to include most recent build process
+1. 
 2. 
-3. 
+3. README
 4. 
 5. move protocol and port from `app/index.js`
 	-	make cmd line options
