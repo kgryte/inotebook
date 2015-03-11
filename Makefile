@@ -5,8 +5,8 @@
 # Component Name:
 NAME ?= nodebook
 
-# Distributable filename:
-OUT ?= $(NAME).html
+# Output filename:
+OUT ?= ./public/index.html
 
 # Set the node.js environment to test:
 NODE_ENV ?= test
@@ -44,8 +44,16 @@ VULCANIZE_BUILD_IN ?= ./build/$(NAME).html
 VULCANIZE_BUILD_OUT ?= $(OUT)
 
 
+# MOCHA #
+
+MOCHA ?= ./node_modules/.bin/mocha
+_MOCHA ?= ./node_modules/.bin/_mocha
+MOCHA_REPORTER ?= spec
+
+
 # ISTANBUL #
 
+# TODO: distinguish between server and UI
 ISTANBUL ?= ./node_modules/.bin/istanbul
 ISTANBUL_OUT ?= ./reports/coverage
 ISTANBUL_REPORT ?= lcov
@@ -78,11 +86,12 @@ JSHINT_REPORTER ?= ./node_modules/jshint-stylish/stylish.js
 # FILES #
 
 # Source files:
-SOURCES ?= src/*.js src/**/*.js
+SOURCES ?= app/*.js app/**/*.js app/**/**/*.js app/**/**/**/*.js app/**/**/**/**/*.js src/*.js src/**/*.js
 
 # Test files:
-TESTS ?= test/*.js test/**/*.js
+TESTS ?= test/app/**/*.js test/app/**/**/*.js test/app/**/**/**/*.js test/app/**/**/**/**/*.js
 
+# TODO: add component test files!!!!
 
 
 
@@ -109,9 +118,21 @@ notes:
 # UNIT TESTS #
 
 .PHONY: test
+.PHONY: test-server test-ui
 .PHONY: test-wct test-browserify test-tmp
 
-test: test-wct
+test: test-server test-ui
+
+# Server:
+test-server: node_modules
+	NODE_ENV=$(NODE_ENV) \
+	NODE_PATH=$(NODE_PATH_TEST) \
+	$(MOCHA) \
+		--reporter $(MOCHA_REPORTER) \
+		$(TESTS)
+
+# UI:
+test-ui: test-wct
 
 test-tmp: clean-test
 	mkdir $(WCT_TMP)
@@ -130,11 +151,29 @@ test-wct: node_modules test-tmp test-browserify
 
 # CODE COVERAGE #
 
-.PHONY: test-cov test-instrument
+.PHONY: test-cov
+.PHONY: test-server-cov test-ui-cov
+.PHONY: test-instrument
 .PHONY: test-istanbul-wct
 .PHONY: test-istanbul-instrument
 
-test-cov: test-istanbul-wct
+test-cov: test-server-cov test-ui-cov
+
+# Server:
+test-server-cov: test-istanbul-mocha
+
+test-istanbul-mocha: node_modules
+	NODE_ENV=$(NODE_ENV) \
+	NODE_PATH=$(NODE_PATH_TEST) \
+	$(ISTANBUL) cover \
+		--dir $(ISTANBUL_OUT) \
+		--report $(ISTANBUL_REPORT) \
+	$(_MOCHA) -- \
+		--reporter $(MOCHA_REPORTER) \
+		$(TESTS)
+
+# UI:
+test-ui-cov: test-istanbul-wct
 
 test-instrument: test-istanbul-instrument
 
@@ -152,9 +191,19 @@ test-istanbul-wct: node_modules test-tmp test-instrument test-browserify
 
 # COVERAGE REPORT #
 
-.PHONY: view-cov view-istanbul-report
+.PHONY: view-cov
+.PHONY: view-server-cov view-ui-cov
+.PHONY: view-istanbul-report
 
-view-cov: view-istanbul-report
+view-cov: view-server-cov view-ui-cov
+
+# Server:
+view-server-cov: view-istanbul-report
+
+# TODO: separate server and UI coverage paths
+
+# UI:
+view-ui-cov: view-istanbul-report
 
 view-istanbul-report:
 	open $(ISTANBUL_HTML_REPORT_PATH)
@@ -165,6 +214,7 @@ view-istanbul-report:
 
 .PHONY: coveralls
 
+# TODO: cat together the server and UI coverage
 coveralls: node_modules test-cov
 	cat $(ISTANBUL_LCOV_INFO_PATH) | $(COVERALLS) && rm -rf $(ISTANBUL_OUT)
 
@@ -187,14 +237,44 @@ lint-jshint: node_modules
 
 .PHONY: install
 .PHONY: install-node install-bower
+.PHONY: install-browserify install-vulcanize
+.PHONY: install-browserify-logger install-browserify-topical
 
-install: install-node install-bower
+install: install-node install-bower install-browserify install-vulcanize
 
 install-node:
 	npm install
 
 install-bower: node_modules
 	$(BOWER) install
+
+
+# TODO: remove these and consolidate with browserify target below...
+
+# Browserify:
+install-browserify: install-browserify-logger install-browserify-topical
+
+install-browserify-logger: install-browserify-bunyan
+
+install-browserify-bunyan: node_modules
+	$(BROWSERIFY) \
+		./node_modules/bunyan/lib/bunyan.js \
+		-s bunyan \
+		-o $(BROWSERIFY_OUT)/bunyan.js
+
+install-browserify-topical: node_modules
+	$(BROWSERIFY) \
+		./node_modules/topical/lib/index.js \
+		-s topical \
+		-o $(BROWSERIFY_OUT)/topical.js
+
+
+# Vulcanize:
+install-vulcanize: node_modules
+	$(VULCANIZE) \
+		$(VULCANIZE_IN) \
+		-o $(VULCANIZE_OUT) \
+		--inline
 
 
 

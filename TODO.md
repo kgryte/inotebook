@@ -24,3 +24,13 @@ TODO
 13. may want to consider __not__ using make targets in package.json; just point to node modules
 	-	in the evt on a system which does not support Make
 14. 
+
+
+
+### Tests
+
+1. log level validate --> other values!!!
+2. app/logger
+3. app/config
+4. middleware/index.js
+5. 

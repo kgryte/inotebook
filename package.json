@@ -61,6 +61,7 @@
     "jshint": "2.x.x",
     "jshint-stylish": "^1.0.0",
     "mocha": "2.x.x",
+    "proxyquire": "^1.4.0",
     "vulcanize": "^0.7.9",
     "wct-local": "^1.2.0",
     "wct-sauce": "^1.2.0",
