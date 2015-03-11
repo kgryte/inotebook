@@ -95,6 +95,7 @@ $ make test-server
 ```
 
 <a name="unit-client"></a>
+#### Client
 
 Unit tests are run via [web component tester](https://github.com/Polymer/web-component-tester), which in turn uses the [Mocha](http://mochajs.org/) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command from the top-level application directory:
 
