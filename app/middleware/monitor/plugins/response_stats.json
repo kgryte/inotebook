@@ -1,0 +1,18 @@
+{
+	"count": 0,
+	"time": {
+		"count": 0,
+		"sum": 0,
+		"mean": 0,
+		"min": 0,
+		"max": 0,
+		"variance": 0
+	},
+	"bytes": {
+		"sum": 0,
+		"mean": 0,
+		"min": 0,
+		"max": 0,
+		"variance": 0
+	}
+}

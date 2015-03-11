@@ -3,7 +3,7 @@
 # VARIABLES #
 
 # Component Name:
-NAME ?= polymer-matrix-diagram
+NAME ?= nodebook
 
 # Distributable filename:
 OUT ?= $(NAME).html
