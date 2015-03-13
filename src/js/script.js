@@ -34,7 +34,7 @@
 /**
 * Code editor.
 */
-require( './codemirror.js' );
+var createEditor = require( './editor.js' );
 
 /**
 * Compute methods.
@@ -42,8 +42,24 @@ require( './codemirror.js' );
 require( './compute-io.js' );
 
 
+// FUNCTIONS //
+
+/**
+* FUNCTION: onReady()
+*	Callback invoked when Polymer is ready.
+*/
+function onReady() {
+	createEditor( '#editor-1' );
+} // end FUNCTION onReady()
+
+
 // MISC //
 
 window.print = function( val ) {
 	return val;
 };
+
+
+// SCRIPT //
+
+window.addEventListener( 'polymer-ready', onReady );

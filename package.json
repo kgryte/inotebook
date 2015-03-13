@@ -40,8 +40,8 @@
   "dependencies": {
     "body-parser": "^1.12.0",
     "bootable": "^0.2.4",
+    "brace": "^0.5.0",
     "bunyan": "^1.3.4",
-    "codemirror": "^5.0.0",
     "compression": "^1.4.1",
     "compute.io": "^0.103.0",
     "connect-middleware-monitor": "^1.0.3",

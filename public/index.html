@@ -11,8 +11,6 @@
 
 		<!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="./css/reset.css">
-		<link rel="stylesheet" type="text/css" href="./css/codemirror.css">
-		<link rel="stylesheet" type="text/css" href="./css/lint.css">
 		<link rel="stylesheet" type="text/css" href="./css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="./css/github-markdown.css">
 		<link rel="stylesheet" type="text/css" href="./css/styles.css">
@@ -27,10 +25,11 @@
 
 		<polymer-nav-bar class="nav-bar" theme="light-blue"></polymer-nav-bar>
 
-		<div class="container">
-			<textarea class="cell"></textarea>
-			<div class="print"></print>
-			<figure class="figure"></figure>
+		<!-- TODO: put in polymer element!! -->
+		<div class="notebook">
+			<div class="note">
+				<div class="editor" id="editor-1"></div>
+			</div>
 		</div>
 
 		<!-- Scripts -->

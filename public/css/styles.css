@@ -26,38 +26,34 @@ body {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 }
 
-.container {
+.notebook {
 	width: 100%;
+	height: auto;
+
 	min-width: 200px;
-	max-width: 90%;
+	max-width: 790px;
 
 	margin: 0 auto;
+}
+
+.note {
+	width: 100%;
+	height: auto;
 }
 
 .print {
 	width: 100%;
 	height: auto;
-	min-height: 200px;
 }
 
-.CodeMirror {
+.editor {
 	width: 100%;
 	height: auto;
+
 	min-height: 200px;
 
-	font-size: 16px;
-}
-
-.CodeMirror-lines {
 	font-family: 'dejavu_sans_monobook', 'Menlo', monospace, sans-serif;
-
-	line-height: 20px;
-}
-
-.CodeMirror-linenumber {
-	font-family: monospace;
-
-	line-height: 20px; /* must be relative to font-size */
+	font-size: 16px;
 }
 
 .markdown-body {

@@ -4,7 +4,14 @@ TODO
 1. 
 2. 
 3. README
-4. 
+4. ability to require
+	-	contact server
+	-	spawn and run npm install
+	-	browserify
+	-	return
+	- 	will need a way to keep track of these separate to actual package.json
+		-	in inb file, have imported modules
+		-	when load, these are downloaded, browserified, and shipped to the browser along with the notebook
 5. move protocol and port from `app/index.js`
 	-	make cmd line options
 6. make logger level a command-line option
@@ -43,11 +50,22 @@ TODO
 	-	many DOM elements
 	-	see how sublime does keyword highlighting
 	-	just for js initially
-	-	base on streams
+	-	base on streams => react (?)
 20. tangle kit --> yep.
-21. 
+21. bower in `public` folder (?)
+	-	need to update ignore files
+22. extract polymer ui components to own repos
+23. place vars in workspace
+	-	ast
+24. ability to print workspace
+25. 
 
 
+
+### Editor
+
+1. keyboard shortcut to toggle line numbers
+2. 
 
 
 ### Components
@@ -59,7 +77,8 @@ TODO
 	-	examples
 	-	tests
 	-	...
-2. 
+2. editor
+3. 
 
 
 
@@ -78,3 +97,19 @@ TODO
 #### Client
 
 1. Everything...
+
+
+### Art
+
+1. ipyth/jupyter
+2. zepellin
+3. databricks
+4. ijs
+5. ijavascript
+6. inode
+7. [wolfram](http://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html)
+8. [mathworks](http://www.mathworks.com/help/matlab/matlab_prog/create-a-matlab-notebook-with-microsoft-word.html)
+9. [domino](http://blog.dominodatalab.com/r-notebooks/)
+10. rstudio
+11. [knitr](http://yihui.name/knitr/)
+12. 
