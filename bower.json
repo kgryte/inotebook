@@ -18,9 +18,10 @@
 		"web component"
 	],
 	"dependencies": {
-		"polymer": "Polymer/polymer#~0.5.4",
+		"polymer": "Polymer/polymer#~0.5.5",
 		"polymer-d3": "figure-io/polymer-d3#~0.0.1",
-		"polymer-uuid": "kgryte/polymer-uuid#~0.0.0"
+		"polymer-uuid": "kgryte/polymer-uuid#~0.0.0",
+		"polymer-timeseries": "figure-io/polymer-timeseries#~0.0.15"
 	},
 	"devDependencies": {
 		"web-component-tester": "Polymer/web-component-tester#~2.2.1"

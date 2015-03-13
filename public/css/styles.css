@@ -1,0 +1,72 @@
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+body {
+	display: block;
+
+	margin-top: 70px; /* nav-bar height + some */
+
+	width: 100%;
+	height: 100%;
+}
+
+.nav-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 50px;
+
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+
+.container {
+	width: 100%;
+	min-width: 200px;
+	max-width: 90%;
+
+	margin: 0 auto;
+}
+
+.print {
+	width: 100%;
+	height: auto;
+	min-height: 200px;
+}
+
+.CodeMirror {
+	width: 100%;
+	height: auto;
+	min-height: 200px;
+
+	font-size: 16px;
+}
+
+.CodeMirror-lines {
+	font-family: 'dejavu_sans_monobook', 'Menlo', monospace, sans-serif;
+
+	line-height: 20px;
+}
+
+.CodeMirror-linenumber {
+	font-family: monospace;
+
+	line-height: 20px; /* must be relative to font-size */
+}
+
+.markdown-body {
+	display: block;
+
+	width: 100%;
+	min-width: 200px;
+	max-width: 790px;
+
+	margin: 0 auto;
+	padding: 30px;
+}

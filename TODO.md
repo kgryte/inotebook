@@ -24,19 +24,57 @@ TODO
 	- 	see todos
 13. may want to consider __not__ using make targets in package.json; just point to node modules
 	-	in the evt on a system which does not support Make
+	-	actually, while this would be good, not really feasible given the complexity of the test process and its reliance on various variables :(
 14. browserify compute.io
 15. figure-io components
 16. move wct.conf.js to /etc
 	-	tmp move file into main directory before testing and then move back
 	-	temporary measure until arbitrary location is allowed
-17. 
+17. favicon
+18. codemirror
+	-	comment addon setup and config
+	-	display hints for compute fcns
+	-	code/gutter folding
+	-	autocomplete
+	-	linting
+		-	codemirror written before browserify; expects globals in json-lint and javascript-lint
+19. ditch codemirror (????)
+	-	heavyweight
+	-	many DOM elements
+	-	see how sublime does keyword highlighting
+	-	just for js initially
+	-	base on streams
+20. tangle kit --> yep.
+21. 
+
+
+
+
+### Components
+
+1. nav-bar
+	-	themeChanged
+		-	should ensure valid theme is provided
+	-	README
+	-	examples
+	-	tests
+	-	...
+2. 
 
 
 
 ### Tests
+
+#### Server
 
 1. log level validate --> other values!!!
 2. app/logger
 3. app/config
 4. middleware/index.js
 5. 
+
+
+
+#### Client
+
+1. Everything...

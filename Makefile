@@ -8,6 +8,12 @@ NAME ?= nodebook
 # Output filename:
 OUT ?= ./public/index.html
 
+# Output CSS directory:
+CSS ?= ./public/css
+
+# Output JS directory:
+JS ?= ./public/js
+
 # Set the node.js environment to test:
 NODE_ENV ?= test
 
@@ -30,8 +36,8 @@ BOWER ?= ./node_modules/.bin/bower
 # BROWSERIFY #
 
 BROWSERIFY ?= ./node_modules/.bin/browserify
-BROWSERIFY_BUILD_IN ?= ./build/js/polymer.js
-BROWSERIFY_BUILD_OUT ?= ./build/js/script.js
+BROWSERIFY_BUILD_IN ?= ./build/components/polymer-nav-bar/js/polymer.js
+BROWSERIFY_BUILD_OUT ?= ./build/components/polymer-nav-bar/js/script.js
 BROWSERIFY_TEST_IN ?= ./build/js/polymer.js
 BROWSERIFY_TEST_OUT ?= ./build/js/script.js
 
@@ -40,8 +46,8 @@ BROWSERIFY_TEST_OUT ?= ./build/js/script.js
 
 VULCANIZE ?= ./node_modules/.bin/vulcanize
 VULCANIZE_CONF ?= ./etc/vulcanize.conf.json
-VULCANIZE_BUILD_IN ?= ./build/$(NAME).html
-VULCANIZE_BUILD_OUT ?= $(OUT)
+VULCANIZE_BUILD_IN ?= ./build/components/polymer-nav-bar/polymer-nav-bar.html
+VULCANIZE_BUILD_OUT ?= ./public/components/polymer-nav-bar/polymer-nav-bar.html
 
 
 # MOCHA #
@@ -281,13 +287,22 @@ install-vulcanize: node_modules
 # BUILD #
 
 .PHONY: build
-.PHONY: build-tmp
+.PHONY: build-tmp build-css build-js
 
-build: node_modules build-tmp browserify vulcanize
+build: node_modules build-tmp browserify vulcanize build-js
 
 build-tmp: clean-build
 	mkdir build
 	cp -a $(WCT_SRC)/. build
+
+build-css: node_modules
+	cp node_modules/github-markdown-css/github-markdown.css $(CSS)/github-markdown.css
+	cp node_modules/codemirror/lib/codemirror.css $(CSS)/codemirror.css
+
+build-js: node_modules
+	$(BROWSERIFY) \
+		./src/js/script.js \
+		-o ./public/js/script.js
 
 
 # BROWSERIFY #
@@ -305,6 +320,9 @@ browserify: node_modules
 .PHONY: vulcanize
 
 vulcanize: node_modules
+	rm -rf public/components
+	mkdir public/components
+	mkdir public/components/polymer-nav-bar
 	$(VULCANIZE) \
 		$(VULCANIZE_BUILD_IN) \
 		--config $(VULCANIZE_CONF) \
@@ -322,7 +340,7 @@ clean: clean-build clean-node clean-bower clean-test
 
 clean-build:
 	rm -rf build
-	rm -f $(OUT)
+	#rm -f $(OUT)
 
 clean-test:
 	rm -rf $(WCT_TMP)

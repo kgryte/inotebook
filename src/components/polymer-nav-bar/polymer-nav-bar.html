@@ -1,0 +1,37 @@
+<!--
+	POLYMER-NAV-BAR
+
+	DESCRIPTION:
+		- `polymer-nav-bar` is a UI element providing top-level application navigation.
+
+	EXAMPLE:
+		<polymer-nav-bar id="nav" theme="indigo"></polymer-nav-bar>
+		...
+		var nav = this.$.nav;
+
+	@element polymer-nav-bar
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="/bower/polymer/polymer.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-nav-bar" attributes="theme">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+		<link rel="stylesheet" href="./css/themes.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<nav class="nav {{ theme }}" id="nav"></nav>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>
