@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="initial-scale=1, width=device-width"/>
+		<meta name="keywords" content=""/>
+
+		<title>Nodebook</title>
+
+		<!-- <link rel="shortcut icon" href="favicon.ico" /> -->
+
+		<!-- Stylesheets -->
+		<link rel="stylesheet" type="text/css" href="./css/reset.css">
+		<link rel="stylesheet" type="text/css" href="./css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+		<!-- Load webcomponents.js for polyfill support -->
+		<script src="./bower/webcomponentsjs/webcomponents.js"></script>
+
+		<!-- Load components -->
+		<link rel="import" href="./components/polymer-nav-bar/polymer-nav-bar.html"/>
+		<link rel="import" href="./components/polymer-notebook/polymer-notebook.html"/>
+	</head>
+	<body unresolved>
+
+		<polymer-nav-bar class="nav-bar" theme="light-blue"></polymer-nav-bar>
+		<polymer-notebook class="notebook"></polymer-notebook>
+
+		<!-- Scripts -->
+		<script src="./js/build.js"></script>
+
+	</body>
+<html>

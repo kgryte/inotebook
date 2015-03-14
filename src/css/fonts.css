@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'dejavu_sans_monobook';
+    src: url('/fonts/DejaVuSansMono-webfont.eot');
+    src: url('/fonts/DejaVuSansMono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/DejaVuSansMono-webfont.woff') format('woff'),
+         url('/fonts/DejaVuSansMono-webfont.ttf') format('truetype'),
+         url('/fonts/DejaVuSansMono-webfont.svg#dejavu_sans_monobook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dejavu_sans_monobook';
+    src: url('/fonts/DejaVuSansMono-Oblique-webfont.eot');
+    src: url('/fonts/DejaVuSansMono-Oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/DejaVuSansMono-Oblique-webfont.woff') format('woff'),
+         url('/fonts/DejaVuSansMono-Oblique-webfont.ttf') format('truetype'),
+         url('/fonts/DejaVuSansMono-Oblique-webfont.svg#dejavu_sans_monobook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dejavu_sans_monobook';
+    src: url('/fonts/DejaVuSansMono-BoldOblique-webfont.eot');
+    src: url('/fonts/DejaVuSansMono-BoldOblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/DejaVuSansMono-BoldOblique-webfont.woff') format('woff'),
+         url('/fonts/DejaVuSansMono-BoldOblique-webfont.ttf') format('truetype'),
+         url('/fonts/DejaVuSansMono-BoldOblique-webfont.svg#dejavu_sans_monobook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dejavu_sans_monobook';
+    src: url('/fonts/DejaVuSansMono-Bold-webfont.eot');
+    src: url('/fonts/DejaVuSansMono-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/DejaVuSansMono-Bold-webfont.woff') format('woff'),
+         url('/fonts/DejaVuSansMono-Bold-webfont.ttf') format('truetype'),
+         url('/fonts/DejaVuSansMono-Bold-webfont.svg#dejavu_sans_monobook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

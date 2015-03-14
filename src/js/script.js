@@ -31,15 +31,7 @@
 
 // MODULES //
 
-/**
-* Code editor.
-*/
-var createEditor = require( './editor.js' );
-
-/**
-* Compute methods.
-*/
-require( './compute-io.js' );
+var compute = require( 'compute.io' );
 
 
 // FUNCTIONS //
@@ -49,17 +41,29 @@ require( './compute-io.js' );
 *	Callback invoked when Polymer is ready.
 */
 function onReady() {
-	createEditor( '#editor-1' );
+	var keys,
+		i;
+
+	// Bind all compute methods to the global `window` object...
+	keys = Object.keys( compute );
+	for ( i = 0; i < keys.length; i++ ) {
+		window[ keys[i] ] = compute[ keys[i] ];
+	}
 } // end FUNCTION onReady()
 
-
-// MISC //
-
-window.print = function( val ) {
+/**
+* FUNCTION: print( val )
+*	Returns an input value.
+*
+* @param {*} val - value
+* @returns {*} input value
+*/
+function print( val ) {
 	return val;
-};
+} // end FUNCTION print()
 
 
 // SCRIPT //
 
+window.print = print;
 window.addEventListener( 'polymer-ready', onReady );

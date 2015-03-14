@@ -58,14 +58,22 @@ TODO
 23. place vars in workspace
 	-	ast
 24. ability to print workspace
-25. 
+25. git commit from browser
+	-	akin to typical 'save', but with a commit message
+26. catch errors when executing
+	-	bubble back to user
+	-	error element
+27. compute in worker
+28. iframe
+29. 
 
 
 
 ### Editor
 
 1. keyboard shortcut to toggle line numbers
-2. 
+2. markdown support (dynamic mode)
+3. 
 
 
 ### Components

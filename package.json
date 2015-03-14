@@ -38,6 +38,7 @@
     "url": "https://github.com/kgryte/nodebook/issues"
   },
   "dependencies": {
+    "acorn": "^0.12.0",
     "body-parser": "^1.12.0",
     "bootable": "^0.2.4",
     "brace": "^0.5.0",
@@ -53,6 +54,7 @@
     "pkginfo": "^0.3.0",
     "response-time": "^2.3.0",
     "topical": "^1.1.1",
+    "validate.io-array": "^1.0.3",
     "validate.io-number": "^1.0.3"
   },
   "devDependencies": {

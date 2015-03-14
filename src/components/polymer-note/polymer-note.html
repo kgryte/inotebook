@@ -1,0 +1,42 @@
+<!--
+	POLYMER-NOTE
+
+	DESCRIPTION:
+		- `polymer-note` is a UI element for creating and managing a note.
+
+	EXAMPLE:
+		<polymer-note id="note"></polymer-note>
+		...
+		var note = this.$.note;
+
+	@element polymer-note
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- COMPONENTS -->
+<link rel="import" href="../polymer-editor/polymer-editor.html">
+<link rel="import" href="../polymer-print/polymer-print.html">
+<!-- <link rel="import" href="../polymer-github-markdown/polymer-github-markdown.html"> -->
+<!-- <link rel="import" href="../polymer-figure/polymer-figure.html"> -->
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-note" attributes="uid type body">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<polymer-editor class="editor" body="{{ body }}"></polymer-editor>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

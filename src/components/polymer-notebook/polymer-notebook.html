@@ -1,0 +1,41 @@
+<!--
+	POLYMER-NOTEBOOK
+
+	DESCRIPTION:
+		- `polymer-notebook` is a UI element for creating and managing notes.
+
+	EXAMPLE:
+		<polymer-notebook id="notebook"></polymer-notebook>
+		...
+		var nb = this.$.notebook;
+
+	@element polymer-notebook
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- COMPONENTS -->
+<link rel="import" href="../polymer-note/polymer-note.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-notebook" attribute="notes">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<template repeat="{{ note in notes }}">
+			<polymer-note class="note" uid="{{ note.uid }}" type="{{ note.type }}" body="{{ note.body }}"></polymer-note>
+		</template>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

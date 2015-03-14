@@ -1,0 +1,46 @@
+:host {
+	display: block;
+
+	font-family: 'dejavu_sans_monobook', 'Menlo', monospace, sans-serif;
+	font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.editor {
+	width: 100%;
+	height: auto;
+
+	min-height: 200px;
+
+	border: 1px solid;
+	border-color: #eee;
+	border-radius: 5px;
+}
+
+.print {
+	width: 100%;
+	height: auto;
+
+	margin-top: 15px;
+	padding: 10px;
+
+	border: 1px solid;
+	border-color: #eee;
+	border-radius: 5px;
+}
+
+.markdown-body {
+	display: block;
+
+	width: 100%;
+
+	margin: 0 auto;
+	padding: 30px;
+}

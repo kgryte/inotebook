@@ -59,7 +59,7 @@ Desktop.ini
 # Bower #
 #########
 /bower/
-/public/bower/
+/src/bower/
 
 # Matlab #
 ##########

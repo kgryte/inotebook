@@ -1,10 +1,10 @@
 /**
 *
-*	SCRIPT: editor
+*	FUNCTION: attached
 *
 *
 *	DESCRIPTION:
-*		-
+*		- Event listener for when an element is inserted into the DOM.
 *
 *
 *	NOTES:
@@ -26,14 +26,17 @@
 *
 */
 
-/* global window, document */
 'use strict';
 
 // MODULES //
 
 var ace = require( 'brace' );
 
+
+// ACE MODES //
+
 require( 'brace/mode/javascript' );
+require( 'brace/mode/text' );
 
 
 // FUNCTIONS //
@@ -46,69 +49,71 @@ require( 'brace/mode/javascript' );
 * @param {Editor} editor - Editor instance
 */
 function onRun( editor ) {
-	var parent = editor.container.parentNode,
-		code,
-		fcn,
-		val,
-		el;
-
-	code = editor.getValue();
+	/* jshint validthis: true */
+	var code = editor.getValue();
 	code = code.replace( /print\((.*)\)/, 'return print($1)' );
 
-	fcn = new Function( code );
-	val = fcn();
-
-	el = parent.querySelector( '.print' );
-	if ( !el ) {
-		el = document.createElement( 'div' );
-		el.classList.add( 'print' );
-		parent.appendChild( el );
-	}
-	el.innerHTML = val;
+	this.body = code;
 } // end FUNCTION onRun()
 
-
-// EDITOR //
-
 /**
-* FUNCTION: create( selector )
+* FUNCTION: create( ctx, el )
 *	Creates a new JavaScript editor instance.
 *
-* @param {String} selector - id selector
+* @param {DOMElement} ctx - `this` context
+* @param {DOMElement} el - DOM element in which to create the editor
 * @returns {Editor} Editor instance
 */
-function create( selector ) {
+function create( ctx, el ) {
 	var editor, session;
 
-	if ( selector[ 0 ] === '#' ) {
-		selector = selector.slice( 1 );
-	}
-	editor = ace.edit( selector );
+	editor = ace.edit( el );
 	editor.setFontSize( 16 );
 	editor.setBehavioursEnabled( true );
 	editor.setHighlightActiveLine( true );
 	editor.setShowPrintMargin( false );
 
 	session = editor.getSession();
+
+	// TODO: mode should be dynamic.
 	session.setMode( 'ace/mode/javascript' );
+
+	// TODO: settings should be configurable.
 	session.setTabSize( 4 );
 	session.setUseSoftTabs( false );
 	session.setUseWrapMode( true );
 
+	// TODO: validate that this is what is wanted.
+	editor.setValue( ctx.body );
+
 	// TODO: shift-enter
 	// TODO: extract to separate file
+	// TODO: callbacks need to be carefully considered in terms of communicating back up to the `note` element.
 	editor.commands.addCommand({
 		'name': 'run',
 		'bindKey': {
 			'win': 'Ctrl-Enter',
 			'mac': 'Command-Enter'
 		},
-		'exec': onRun
+		'exec': onRun.bind( ctx )
 	});
 	return editor;
 } // end FUNCTION create()
 
 
+// ATTACHED //
+
+/**
+* FUNCTION: attached()
+*	Event listener for when an element is inserted in the DOM.
+*/
+function attached() {
+	/* jslint validthis:true */
+	create( this, this.$.editor );
+} // end FUNCTION attached()
+
+
 // EXPORTS //
 
-module.exports = create;
+module.exports = attached;
+

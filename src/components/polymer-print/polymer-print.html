@@ -1,15 +1,15 @@
 <!--
-	POLYMER-NAV-BAR
+	POLYMER-PRINT
 
 	DESCRIPTION:
-		- `polymer-nav-bar` is a UI element providing top-level application navigation.
+		- `polymer-print` is a UI element for printing results.
 
 	EXAMPLE:
-		<polymer-nav-bar id="nav" theme="indigo"></polymer-nav-bar>
+		<polymer-print id="print" body="1e4"></polymer-print>
 		...
-		var nav = this.$.nav;
+		var print = this.$.print;
 
-	@element polymer-nav-bar
+	@element polymer-print
 	@status unstable
 -->
 
@@ -17,17 +17,16 @@
 <link rel="import" href="../../bower/polymer/polymer.html">
 
 <!-- ELEMENT -->
-<polymer-element name="polymer-nav-bar" attributes="theme">
+<polymer-element name="polymer-print" attributes="body">
 
 	<template>
 
 		<!-- STYLESHEETS -->
 		<link rel="stylesheet" href="./css/reset.css">
 		<link rel="stylesheet" href="./css/styles.css">
-		<link rel="stylesheet" href="./css/themes.css">
 
 		<!-- PRESENTATION CONTENT -->
-		<nav class="nav {{ theme }}" id="nav"></nav>
+		<div class="content" id="content">{{ body }}</div>
 
 	</template>
 

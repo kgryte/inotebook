@@ -28,7 +28,6 @@
 
 'use strict';
 
-
 // NAVBAR //
 
 /**
