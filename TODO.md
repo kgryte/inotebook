@@ -57,6 +57,7 @@ TODO
 22. extract polymer ui components to own repos
 23. place vars in workspace
 	-	ast
+	-	should blacklist certain fcns and variables (e.g., window, doc, createElement, script, etc)
 24. ability to print workspace
 25. git commit from browser
 	-	akin to typical 'save', but with a commit message
@@ -64,15 +65,29 @@ TODO
 	-	bubble back to user
 	-	error element
 27. compute in worker
+	-	cache vars in indexeddb???
+	-	see #28
 28. iframe
-29. 
+	-	cannot do; as need shared workspace
+	-	could do, but would need to marshal and unmarshal values from one frame to another
+29. print element should wrap results (no horizontal scroll)
+30. 'live' cell mode
+	-	for each new line, check if `;`. If not, print the value of the most recent variable assignment (ala mtlb)
+	-	most recent, as a fcn may not return a value, but instead mutate a value
+31. 
 
 
 
 ### Editor
 
 1. keyboard shortcut to toggle line numbers
-2. markdown support (dynamic mode)
+2. markdown support (requires dynamic mode)
+	-	use markdown-it
+	-	include suitable plugins
+		-	footnote
+		-	dl
+		-	sup/sub
+		-	will need to write a plugin for markdown-it to support TeX
 3. 
 
 
@@ -120,4 +135,5 @@ TODO
 9. [domino](http://blog.dominodatalab.com/r-notebooks/)
 10. rstudio
 11. [knitr](http://yihui.name/knitr/)
-12. 
+12. notebookjs
+13. 

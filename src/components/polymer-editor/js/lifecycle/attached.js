@@ -76,7 +76,11 @@ function create( ctx, el ) {
 	session = editor.getSession();
 
 	// TODO: mode should be dynamic.
-	session.setMode( 'ace/mode/javascript' );
+	if ( ctx.mode === 'markdown' ) {
+		session.setMode( 'ace/mode/text' );
+	} else {
+		session.setMode( 'ace/mode/'+ctx.mode );
+	}
 
 	// TODO: settings should be configurable.
 	session.setTabSize( 4 );
@@ -109,7 +113,7 @@ function create( ctx, el ) {
 */
 function attached() {
 	/* jslint validthis:true */
-	create( this, this.$.editor );
+	this._editor = create( this, this.$.editor );
 } // end FUNCTION attached()
 
 

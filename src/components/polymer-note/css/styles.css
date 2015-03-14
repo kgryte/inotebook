@@ -13,34 +13,30 @@
 	        box-sizing: border-box;
 }
 
-.editor {
+.editor,
+.print,
+.markdown {
 	width: 100%;
 	height: auto;
-
-	min-height: 200px;
 
 	border: 1px solid;
 	border-color: #eee;
 	border-radius: 5px;
+}
+
+.editor {
+	min-height: 200px;
+}
+
+.print,
+.markdown {
+	margin-top: 15px;
 }
 
 .print {
-	width: 100%;
-	height: auto;
-
-	margin-top: 15px;
 	padding: 10px;
-
-	border: 1px solid;
-	border-color: #eee;
-	border-radius: 5px;
 }
 
-.markdown-body {
-	display: block;
-
-	width: 100%;
-
-	margin: 0 auto;
+.markdown {
 	padding: 30px;
 }

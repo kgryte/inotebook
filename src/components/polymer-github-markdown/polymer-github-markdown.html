@@ -1,0 +1,37 @@
+<!--
+	POLYMER-GITHUB-MARKDOWN
+
+	DESCRIPTION:
+		- `polymer-github-markdown` is a UI element for rendered Github flavored Markdown.
+
+	EXAMPLE:
+		<polymer-github-markdown id="gfm" body="## Heading 1\nThis is some text."></polymer-github-markdown>
+		...
+		var gfm = this.$.gfm;
+
+	@element polymer-github-markdown
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-github-markdown">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+		<link rel="stylesheet" href="./css/github-markdown.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<div class="markdown-body" id="body"></div>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

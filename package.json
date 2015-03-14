@@ -48,6 +48,7 @@
     "connect-middleware-monitor": "^1.0.3",
     "express": "^4.12.2",
     "github-markdown-css": "^2.x.x",
+    "markdown-it": "^4.0.1",
     "monitor-plugin-os": "^1.0.0",
     "monitor-plugin-process": "^1.0.0",
     "node-uuid": "^1.4.3",

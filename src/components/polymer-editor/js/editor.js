@@ -56,6 +56,15 @@ function Editor() {
 */
 Editor.prototype.body = '';
 
+/**
+* ATTRIBUTE: mode
+*	Editor mode.
+*
+* @type {String}
+* @default 'text'
+*/
+Editor.prototype.mode = 'text';
+
 
 // LIFECYCLE //
 
@@ -67,6 +76,8 @@ Editor.prototype.attached = require( './lifecycle/attached.js' );
 // WATCHERS //
 
 Editor.prototype.bodyChanged = require( './watchers/body.js' );
+
+Editor.prototype.modeChanged = require( './watchers/mode.js' );
 
 
 // EXPORTS //

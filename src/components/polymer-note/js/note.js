@@ -48,13 +48,13 @@ function Note() {
 // ATTRIBUTES //
 
 /**
-* ATTRIBUTE: type
-*	Note type.
+* ATTRIBUTE: mode
+*	Note mode.
 *
 * @type {String}
-* @default 'javascript'
+* @default ''
 */
-Note.prototype.type = 'javascript';
+Note.prototype.mode = '';
 
 /**
 * ATTRIBUTE: body
@@ -66,9 +66,14 @@ Note.prototype.type = 'javascript';
 Note.prototype.body = '';
 
 
+// LIFECYCLE //
+
+Note.prototype.attached = require( './lifecycle/attached.js' );
+
+
 // WATCHERS //
 
-Note.prototype.typeChanged = require( './watchers/type.js' );
+Note.prototype.modeChanged = require( './watchers/mode.js' );
 
 Note.prototype.bodyChanged = require( './watchers/body.js' );
 

@@ -28,6 +28,13 @@
 
 'use strict';
 
+// MODULES //
+
+var md = require( 'markdown-it' )();
+
+
+// BODY CHANGED //
+
 /**
 * FUNCTION: bodyChanged( oldVal, newVal )
 *	Event handler for changes to a note body.
@@ -47,18 +54,33 @@ function bodyChanged( oldVal, newVal ) {
 		this.body = oldVal;
 		return;
 	}
-	// TODO: this is where the magic should occur when parsing the AST and generating the new code to be evaluated.
-	fcn = new Function( newVal );
-	val = fcn();
+	if ( this.mode === 'javascript' ) {
+		// TODO: this is where the magic should occur when parsing the AST and generating the new code to be evaluated.
+		fcn = new Function( newVal );
+		val = fcn();
 
-	el = this.shadowRoot.querySelector( '.print' );
-	if ( !el ) {
-		el = document.createElement( 'polymer-print' );
-		el.classList.add( 'print' );
-		this.shadowRoot.appendChild( el );
+		el = this.shadowRoot.querySelector( '.print' );
+		if ( !el ) {
+			el = document.createElement( 'polymer-print' );
+			el.classList.add( 'print' );
+			this.shadowRoot.appendChild( el );
+		}
+		el.setAttribute( 'body', val );
 	}
-	el.setAttribute( 'body', val );
+	else if ( this.mode === 'markdown' ) {
+		val = md.render( newVal );
 
+		// TODO: hide the editor
+		// TODO: bind a double-clk callback which toggles editor/rendered markdown visibility
+
+		el = this.shadowRoot.querySelector( '.markdown' );
+		if ( !el ) {
+			el = document.createElement( 'polymer-github-markdown' );
+			el.classList.add( 'markdown' );
+			this.shadowRoot.appendChild( el );
+		}
+		el.$.body.innerHTML = val;
+	}
 	this.fire( 'change', {
 		'attr': 'body',
 		'prev': oldVal,

@@ -41,15 +41,21 @@ var compute = require( 'compute.io' );
 *	Callback invoked when Polymer is ready.
 */
 function onReady() {
+	// TODO
+} // end FUNCTION onReady()
+
+/**
+* FUNCTION: createGlobals()
+*	Binds all compute methods to the global `window` object.
+*/
+function createGlobals() {
 	var keys,
 		i;
-
-	// Bind all compute methods to the global `window` object...
 	keys = Object.keys( compute );
 	for ( i = 0; i < keys.length; i++ ) {
 		window[ keys[i] ] = compute[ keys[i] ];
 	}
-} // end FUNCTION onReady()
+} // end FUNCTION createGlobals()
 
 /**
 * FUNCTION: print( val )
@@ -65,5 +71,6 @@ function print( val ) {
 
 // SCRIPT //
 
+createGlobals();
 window.print = print;
 window.addEventListener( 'polymer-ready', onReady );

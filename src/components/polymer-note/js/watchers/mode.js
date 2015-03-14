@@ -1,10 +1,10 @@
 /**
 *
-*	FUNCTION: typeChanged
+*	FUNCTION: modeChanged
 *
 *
 *	DESCRIPTION:
-*		- Event handler for changes to a note type.
+*		- Event handler for changes to a note mode.
 *
 *
 *	NOTES:
@@ -29,32 +29,32 @@
 'use strict';
 
 /**
-* FUNCTION: typeChanged( oldVal, newVal )
-*	Event handler for changes to a note type.
+* FUNCTION: modeChanged( oldVal, newVal )
+*	Event handler for changes to a note mode.
 *
 * @param {String} oldVal - old value
 * @param {String} newVal - new value
 */
-function typeChanged( oldVal, newVal ) {
+function modeChanged( oldVal, newVal ) {
 	/* jslint validthis:true */
 	var err;
 	if ( typeof newVal !== 'string' ) {
-		err = new TypeError( 'type::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
+		err = new TypeError( 'mode::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
 		this.fire( 'err', err );
-		this.type = oldVal;
+		this.mode = oldVal;
 		return;
 	}
 
 	// TODO: change the renderer!!!
 
 	this.fire( 'change', {
-		'attr': 'type',
+		'attr': 'mode',
 		'prev': oldVal,
 		'curr': newVal
 	});
-} // end FUNCTION typeChanged()
+} // end FUNCTION modeChanged()
 
 
 // EXPORTS //
 
-module.exports = typeChanged;
+module.exports = modeChanged;
