@@ -41,7 +41,8 @@ var express = require( 'express' ),
 	start = require( './start' ),
 	finish = require( './finish' ),
 	onError = require( './error' ),
-	onStatic = express.static( path.resolve( __dirname, '../../public' ) );
+	onPublic = express.static( path.resolve( __dirname, '../../public' ) ),
+	onExamples = express.static( path.resolve( __dirname, '../../examples' ) );
 
 
 // REQUEST HANDLERS //
@@ -78,7 +79,8 @@ function middleware( next ) {
 	app.use( compression() );
 
 	// Specify the location of static application files:
-	app.use( '/', onStatic );
+	app.use( onPublic );
+	app.use( '/examples', onExamples );
 
 	// Perform initial start tasks:
 	app.use( start );

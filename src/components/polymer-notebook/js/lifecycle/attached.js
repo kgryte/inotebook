@@ -41,18 +41,18 @@ function attached() {
 	this.notes = [
 		{
 			'uid': 1,
-			'mode': 'javascript',
-			'body': 'var arr, mu;\narr = [ 1,2,3,4,5,null,\'\' ];\nmu = nanmean( arr );\nprint( mu );'
-		},
-		{
-			'uid': 2,
 			'mode': 'markdown',
 			'body': '## Heading\n> This is a quote.\n\n### Heading\n\nThis is a paragraph.\n\n``` javascript\nfunction beep( a, b ) {\n\treturn a+b;\n}\n```'
 		},
 		{
+			'uid': 2,
+			'mode': 'javascript',
+			'body': 'var arr, mu;\narr = [ 1,2,3,4,5,null,\'\' ];\nmu = nanmean( arr );\nprint( mu );'
+		},
+		{
 			'uid': 3,
 			'mode': 'javascript',
-			'body': ''
+			'body': 'var data = load( \'./examples/data/timeseries.json\' );\nplot( data );'
 		}
 	];
 } // end FUNCTION attached()

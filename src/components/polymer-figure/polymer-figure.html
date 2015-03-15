@@ -1,0 +1,39 @@
+<!--
+	POLYMER-FIGURE
+
+	DESCRIPTION:
+		- `polymer-figure` is a figure component.
+
+	EXAMPLE:
+		<polymer-figure id="figure" data="[[1,0],[2,1]]"></polymer-figure>
+		...
+		var figure = this.$.figure;
+
+	@element polymer-figure
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- COMPONENTS -->
+<link rel="import" href="../../bower/polymer-timeseries/polymer-timeseries.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-figure" attributes="data">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<polymer-timeseries class="chart" id="chart"></polymer-timeseries>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

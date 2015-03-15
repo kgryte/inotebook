@@ -15,7 +15,8 @@
 
 .editor,
 .print,
-.markdown {
+.markdown,
+.figure {
 	width: 100%;
 	height: auto;
 
@@ -29,7 +30,8 @@
 }
 
 .print,
-.markdown {
+.markdown,
+.figure {
 	margin-top: 15px;
 }
 
@@ -37,6 +39,7 @@
 	padding: 10px;
 }
 
-.markdown {
+.markdown,
+.figure {
 	padding: 30px;
 }

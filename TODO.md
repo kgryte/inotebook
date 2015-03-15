@@ -74,7 +74,12 @@ TODO
 30. 'live' cell mode
 	-	for each new line, check if `;`. If not, print the value of the most recent variable assignment (ala mtlb)
 	-	most recent, as a fcn may not return a value, but instead mutate a value
-31. 
+31. note toolbar
+	-	single toolbar which uses focus, or each note gets its own controls?
+32. rewrite prism.js as worker stream
+	-	see github-markdown el
+	-	then hook into [md-it](https://github.com/markdown-it/markdown-it#syntax-highlighting)
+33. 
 
 
 

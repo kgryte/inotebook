@@ -50,10 +50,7 @@ require( 'brace/mode/text' );
 */
 function onRun( editor ) {
 	/* jshint validthis: true */
-	var code = editor.getValue();
-	code = code.replace( /print\((.*)\)/, 'return print($1)' );
-
-	this.body = code;
+	this.body = editor.getValue();
 } // end FUNCTION onRun()
 
 /**

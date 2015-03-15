@@ -319,6 +319,9 @@ browserify: node_modules
 		./build/components/polymer-github-markdown/js/polymer.js \
 		-o ./build/components/polymer-github-markdown/js/script.js
 	$(BROWSERIFY) \
+		./build/components/polymer-figure/js/polymer.js \
+		-o ./build/components/polymer-figure/js/script.js
+	$(BROWSERIFY) \
 		./build/js/script.js \
 		-o ./build/js/build.js
 
