@@ -18533,6 +18533,18 @@ table {
 	background-color: #03A9F4;
 }
 
+/* Theme: white */
+
+.white {
+	background-color: #FFFFFF;
+}
+
+/* Theme: dark-gray */
+
+.dark-gray {
+	background-color: #474747;
+}
+
 
 /* TODO: more themes */
 </style>
@@ -18968,7 +18980,7 @@ function create( ctx, el ) {
 	session.setUseWrapMode( true );
 
 	// TODO: validate that this is what is wanted.
-	editor.setValue( ctx.body );
+	editor.setValue( ctx.body, 1 );
 
 	// TODO: shift-enter
 	// TODO: extract to separate file
@@ -55982,7 +55994,7 @@ module.exports = isArray;
 </polymer-element>
 </div>
 
-		<polymer-nav-bar class="nav-bar" theme="light-blue"></polymer-nav-bar>
+		<polymer-nav-bar class="nav-bar" theme="dark-gray"></polymer-nav-bar>
 		<polymer-notebook class="notebook"></polymer-notebook>
 
 		<!-- Scripts -->

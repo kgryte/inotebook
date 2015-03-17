@@ -85,7 +85,7 @@ function create( ctx, el ) {
 	session.setUseWrapMode( true );
 
 	// TODO: validate that this is what is wanted.
-	editor.setValue( ctx.body );
+	editor.setValue( ctx.body, 1 );
 
 	// TODO: shift-enter
 	// TODO: extract to separate file

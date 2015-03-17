@@ -19,5 +19,17 @@
 	background-color: #03A9F4;
 }
 
+/* Theme: white */
+
+.white {
+	background-color: #FFFFFF;
+}
+
+/* Theme: dark-gray */
+
+.dark-gray {
+	background-color: #474747;
+}
+
 
 /* TODO: more themes */

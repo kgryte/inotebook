@@ -32,7 +32,7 @@ TODO
 13. may want to consider __not__ using make targets in package.json; just point to node modules
 	-	in the evt on a system which does not support Make
 	-	actually, while this would be good, not really feasible given the complexity of the test process and its reliance on various variables :(
-14. browserify compute.io
+14. 
 15. figure-io components
 16. move wct.conf.js to /etc
 	-	tmp move file into main directory before testing and then move back
@@ -51,7 +51,7 @@ TODO
 	-	see how sublime does keyword highlighting
 	-	just for js initially
 	-	base on streams => react (?)
-20. tangle kit --> yep.
+20. tangle kit --> yep. will require rewrite.
 21. bower in `public` folder (?)
 	-	need to update ignore files
 22. extract polymer ui components to own repos
@@ -79,7 +79,8 @@ TODO
 32. rewrite prism.js as worker stream
 	-	see github-markdown el
 	-	then hook into [md-it](https://github.com/markdown-it/markdown-it#syntax-highlighting)
-33. 
+33. `help()` method
+34. 
 
 
 
