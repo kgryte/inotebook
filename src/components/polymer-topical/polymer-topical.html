@@ -1,0 +1,25 @@
+<!--
+	POLYMER-TOPICAL
+
+	DESCRIPTION:
+		- `polymer-topical` is an element which exposes an application publish-subscribe service. The service can be used to broadcast and listen for global events, as well as events published on particular topics.
+
+	EXAMPLE:
+		<polymer-topical id="topical"></polymer-topical>
+		...
+		this.$.topical.topical.subscribe( 'news', function onNews(){} );
+
+	@element polymer-topical
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-topical" hidden>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

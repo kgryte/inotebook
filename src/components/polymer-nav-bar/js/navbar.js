@@ -45,6 +45,21 @@ function NavBar() {
 } // end FUNCTION NavBar()
 
 
+// LIFECYCLE //
+
+NavBar.prototype.created = require( './lifecycle/created.js' );
+
+
+// INIT //
+
+NavBar.prototype.init = require( './init' );
+
+
+// LISTENERS //
+
+NavBar.prototype.onCreateNew = require( './listeners/createNew.js' );
+
+
 // EXPORTS //
 
 module.exports = NavBar;

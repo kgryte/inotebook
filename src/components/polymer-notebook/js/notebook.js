@@ -47,7 +47,17 @@ function Notebook() {
 
 // LIFECYCLE //
 
-Notebook.prototype.attached = require( './lifecycle/attached.js' );
+Notebook.prototype.created = require( './lifecycle/created.js' );
+
+
+// INIT //
+
+Notebook.prototype.init = require( './init' );
+
+
+// CREATE //
+
+Notebook.prototype.createNote = require( './create/note.js' );
 
 
 // WATCHERS //

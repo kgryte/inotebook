@@ -16,6 +16,9 @@
 <!-- POLYMER -->
 <link rel="import" href="../../bower/polymer/polymer.html">
 
+<!-- COMPONENTS -->
+<link rel="import" href="../polymer-topical/polymer-topical.html">
+
 <!-- ELEMENT -->
 <polymer-element name="polymer-nav-bar">
 
@@ -30,7 +33,7 @@
 		<nav class="nav" id="nav">
 			<ul class="right">
 				<li>
-					<i class="icon" on-click=""><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></i>
+					<i class="icon" on-click="{{ onCreateNew }}"><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></i>
 				</li>
 			</ul>
 		</nav>

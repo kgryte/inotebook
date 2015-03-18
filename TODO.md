@@ -126,6 +126,12 @@ TODO
 
 
 
+### Bugs
+
+1. When edit note title and repeatedly hit backspace, eventually move to left of icon
+2. 
+
+
 ### Tests
 
 #### Server

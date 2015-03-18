@@ -30,7 +30,7 @@
 
 /**
 * FUNCTION: attached()
-*	Event listener for when an element is inserted in the DOM.
+*	Event listener for when an element is inserted into the DOM.
 */
 function attached() {
 	/* jslint validthis:true */

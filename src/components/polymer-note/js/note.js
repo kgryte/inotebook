@@ -86,6 +86,8 @@ Note.prototype.hideEditor = false;
 
 // LIFECYCLE //
 
+Note.prototype.created = require( './lifecycle/created.js' );
+
 Note.prototype.attached = require( './lifecycle/attached.js' );
 
 

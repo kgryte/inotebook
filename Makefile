@@ -325,6 +325,9 @@ browserify: node_modules
 		./build/components/polymer-footer/js/polymer.js \
 		-o ./build/components/polymer-footer/js/script.js
 	$(BROWSERIFY) \
+		./build/components/polymer-topical/js/polymer.js \
+		-o ./build/components/polymer-topical/js/script.js
+	$(BROWSERIFY) \
 		./build/js/script.js \
 		-o ./build/js/build.js
 

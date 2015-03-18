@@ -53,6 +53,7 @@ function notesChanged( val, newVal ) {
 	}
 
 	// TODO: do something with the notes...
+	// TODO: if a note is changed/inserted, validate that a note conforms to note spec
 
 	if ( !this.notes.length ) {
 		// Create a new empty note...

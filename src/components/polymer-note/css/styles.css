@@ -40,6 +40,14 @@ li+li {
 	cursor: pointer;
 }
 
+.right .icon {
+	color: #aaa;
+}
+
+.right .icon:hover {
+	color: #000;
+}
+
 .heading {
 	display: block;
 
