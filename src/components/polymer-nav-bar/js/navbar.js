@@ -45,23 +45,6 @@ function NavBar() {
 } // end FUNCTION NavBar()
 
 
-// ATTRIBUTES //
-
-/**
-* ATTRIBUTE: theme
-*	Navigation style theme.
-*
-* @type {String}
-* @default 'indigo'
-*/
-NavBar.prototype.theme = 'indigo';
-
-
-// WATCHERS //
-
-NavBar.prototype.themeChanged = require( './watchers/theme.js' );
-
-
 // EXPORTS //
 
 module.exports = NavBar;

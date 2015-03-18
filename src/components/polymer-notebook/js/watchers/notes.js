@@ -54,6 +54,15 @@ function notesChanged( val, newVal ) {
 
 	// TODO: do something with the notes...
 
+	if ( !this.notes.length ) {
+		// Create a new empty note...
+		this.notes.push({
+			'uid': Math.random(),
+			'name': 'Note',
+			'mode': 'javascript',
+			'body': ''
+		});
+	}
 	this.fire( 'notes', {
 		'type': 'change'
 	});

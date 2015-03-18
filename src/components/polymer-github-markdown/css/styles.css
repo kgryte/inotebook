@@ -9,3 +9,12 @@
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+
+/* Patches */
+.markdown-body ul {
+	list-style-type: disc;
+}
+
+.markdown-body em {
+	font-style: italic;
+}

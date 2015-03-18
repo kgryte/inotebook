@@ -56,7 +56,9 @@
     "response-time": "^2.3.0",
     "topical": "^1.1.1",
     "validate.io-array": "^1.0.3",
-    "validate.io-number": "^1.0.3"
+    "validate.io-boolean-primitive": "^1.0.0",
+    "validate.io-number": "^1.0.3",
+    "validate.io-string": "^1.0.2"
   },
   "devDependencies": {
     "bower": "^1.3.12",

@@ -37,7 +37,7 @@ var isString = require( 'validate.io-string' );
 
 /**
 * FUNCTION: bodyChanged( oldVal, newVal )
-*	Event handler for changes to a body attribute.
+*	Event handler for changes to body attribute.
 *
 * @param {String} oldVal - old value
 * @param {String} newVal - new value
@@ -51,6 +51,7 @@ function bodyChanged( oldVal, newVal ) {
 		this.body = oldVal;
 		return;
 	}
+	this.$.body.innerHTML = newVal;
 	this.fire( 'change', {
 		'attr': 'body',
 		'prev': oldVal,

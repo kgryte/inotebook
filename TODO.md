@@ -80,7 +80,22 @@ TODO
 	-	see github-markdown el
 	-	then hook into [md-it](https://github.com/markdown-it/markdown-it#syntax-highlighting)
 33. `help()` method
-34. 
+	-	how can we do this dynamically? say, by reading the module README.
+		-	the README's are regular enough that should be able to parse until `## Tests`
+		-	remove badges??? Maybe if not connected to the internet... (otherwise will appear as broken images) --> maybe replace with placeholders
+34. fig component should have a chart type attr
+	-	dynamically create the desired chart type
+35. reserved words
+	-	table, plot, help
+36. minify during build
+37. search (ES)
+	-	could perform in browser via worker
+	-	would want to display snippets ala sublime
+38. ability to gist from an nb
+39. btn tips
+40. d&d cells from other nbs
+41. med style comments?
+42. 
 
 
 

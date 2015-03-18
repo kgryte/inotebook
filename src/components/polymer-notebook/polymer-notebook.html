@@ -30,7 +30,7 @@
 
 		<!-- PRESENTATION CONTENT -->
 		<template repeat="{{ note in notes }}">
-			<polymer-note class="note" uid="{{ note.uid }}" mode="{{ note.mode }}" body="{{ note.body }}"></polymer-note>
+			<polymer-note class="note" uid="{{ note.uid }}" mode="{{ note.mode }}" name="{{ note.name }}" body="{{ note.body }}" on-clicked.removeicon="{{ onRemoveIconClick }}"></polymer-note>
 		</template>
 
 	</template>

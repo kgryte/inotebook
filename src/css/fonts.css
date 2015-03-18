@@ -1,4 +1,15 @@
 @font-face {
+  font-family: 'font-awesome';
+  src: url('/fonts/font-awesome.eot?80540775');
+  src: url('/fonts/font-awesome.eot?80540775#iefix') format('embedded-opentype'),
+       url('/fonts/font-awesome.woff?80540775') format('woff'),
+       url('/fonts/font-awesome.ttf?80540775') format('truetype'),
+       url('/fonts/font-awesome.svg?80540775#font-awesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
     font-family: 'dejavu_sans_monobook';
     src: url('/fonts/DejaVuSansMono-webfont.eot');
     src: url('/fonts/DejaVuSansMono-webfont.eot?#iefix') format('embedded-opentype'),

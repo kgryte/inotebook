@@ -17,17 +17,23 @@
 <link rel="import" href="../../bower/polymer/polymer.html">
 
 <!-- ELEMENT -->
-<polymer-element name="polymer-nav-bar" attributes="theme">
+<polymer-element name="polymer-nav-bar">
 
 	<template>
 
 		<!-- STYLESHEETS -->
 		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/font-awesome.css">
 		<link rel="stylesheet" href="./css/styles.css">
-		<link rel="stylesheet" href="./css/themes.css">
 
 		<!-- PRESENTATION CONTENT -->
-		<nav class="nav {{ theme }}" id="nav"></nav>
+		<nav class="nav" id="nav">
+			<ul class="right">
+				<li>
+					<i class="icon" on-click=""><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></i>
+				</li>
+			</ul>
+		</nav>
 
 	</template>
 

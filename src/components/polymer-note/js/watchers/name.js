@@ -1,10 +1,10 @@
 /**
 *
-*	FUNCTION: bodyChanged
+*	FUNCTION: nmaeChanged
 *
 *
 *	DESCRIPTION:
-*		- Event handler for changes to a body attribute.
+*		- Event handler for changes to a note name.
 *
 *
 *	NOTES:
@@ -33,32 +33,32 @@
 var isString = require( 'validate.io-string' );
 
 
-// BODY CHANGED //
+// NAME CHANGED //
 
 /**
-* FUNCTION: bodyChanged( oldVal, newVal )
-*	Event handler for changes to a body attribute.
+* FUNCTION: nameChanged( oldVal, newVal )
+*	Event handler for changes to a note name.
 *
 * @param {String} oldVal - old value
 * @param {String} newVal - new value
 */
-function bodyChanged( oldVal, newVal ) {
+function nameChanged( oldVal, newVal ) {
 	/* jslint validthis:true */
 	var err;
 	if ( !isString( newVal ) ) {
-		err = new TypeError( 'body::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
+		err = new TypeError( 'name::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
 		this.fire( 'err', err );
-		this.body = oldVal;
+		this.name = oldVal;
 		return;
 	}
 	this.fire( 'change', {
-		'attr': 'body',
+		'attr': 'name',
 		'prev': oldVal,
 		'curr': newVal
 	});
-} // end FUNCTION bodyChanged()
+} // end FUNCTION nameChanged()
 
 
 // EXPORTS //
 
-module.exports = bodyChanged;
+module.exports = nameChanged;

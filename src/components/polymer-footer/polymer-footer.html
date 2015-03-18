@@ -1,0 +1,53 @@
+<!--
+	POLYMER-FOOTER
+
+	DESCRIPTION:
+		- `polymer-footer` is a UI element providing an application footer.
+
+	EXAMPLE:
+		<polymer-footer id="footer"></polymer-footer>
+		...
+		var footer = this.$.footer;
+
+	@element polymer-footer
+	@status unstable
+-->
+
+<!-- POLYMER -->
+<link rel="import" href="../../bower/polymer/polymer.html">
+
+<!-- ELEMENT -->
+<polymer-element name="polymer-footer">
+
+	<template>
+
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/styles.css">
+
+		<!-- PRESENTATION CONTENT -->
+		<footer class="footer" id="footer">
+			<ul class="right">
+				<li>
+					<a href="http://inotebook.io">Project</a>
+				</li>
+				<li>
+					<a href="http://inotebook.io">Guide</a>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					&copy; 2015 <a href="https://github.com/kgryte">Athan Reines</a>.
+				</li>
+				<li>
+					<a href="https://github.com/inotebook.io">License</a>
+				</li>
+			</ul>
+		</footer>
+
+	</template>
+
+	<!-- REGISTRATION -->
+	<script src="./js/script.js"></script>
+
+</polymer-element>

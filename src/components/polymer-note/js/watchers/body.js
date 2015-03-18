@@ -30,7 +30,8 @@
 
 // MODULES //
 
-var md = require( 'markdown-it' )();
+var isString = require( 'validate.io-string' ),
+	md = require( 'markdown-it' )();
 
 
 // BODY CHANGED //
@@ -44,17 +45,19 @@ var md = require( 'markdown-it' )();
 */
 function bodyChanged( oldVal, newVal ) {
 	/* jslint validthis:true */
-	var err,
+	var output,
+		err,
 		fcn,
 		val,
 		flg,
 		el;
-	if ( typeof newVal !== 'string' ) {
+	if ( !isString( newVal ) ) {
 		err = new TypeError( 'body::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
 		this.fire( 'err', err );
 		this.body = oldVal;
 		return;
 	}
+	output = this.$.output;
 	if ( this.mode === 'javascript' ) {
 		// TODO: this is where the magic should occur when parsing the AST and generating the new code to be evaluated.
 
@@ -76,19 +79,19 @@ function bodyChanged( oldVal, newVal ) {
 		val = fcn();
 
 		if ( !flg ) {
-			el = this.shadowRoot.querySelector( '.print' );
+			el = output.querySelector( '.print' );
 			if ( !el ) {
 				el = document.createElement( 'polymer-print' );
 				el.classList.add( 'print' );
-				this.shadowRoot.appendChild( el );
+				output.appendChild( el );
 			}
 			el.setAttribute( 'body', val );
 		} else {
-			el = this.shadowRoot.querySelector( '.figure' );
+			el = output.querySelector( '.figure' );
 			if ( !el ) {
 				el = document.createElement( 'polymer-figure' );
 				el.classList.add( 'figure' );
-				this.shadowRoot.appendChild( el );
+				output.appendChild( el );
 			}
 			// HACK
 			// FIXME
@@ -109,13 +112,15 @@ function bodyChanged( oldVal, newVal ) {
 		// TODO: hide the editor
 		// TODO: bind a double-clk callback which toggles editor/rendered markdown visibility
 
-		el = this.shadowRoot.querySelector( '.markdown' );
+		this.hideEditor = true;
+
+		el = output.querySelector( '.markdown' );
 		if ( !el ) {
 			el = document.createElement( 'polymer-github-markdown' );
 			el.classList.add( 'markdown' );
-			this.shadowRoot.appendChild( el );
+			output.appendChild( el );
 		}
-		el.$.body.innerHTML = val;
+		el.setAttribute( 'body', val );
 	}
 	this.fire( 'change', {
 		'attr': 'body',

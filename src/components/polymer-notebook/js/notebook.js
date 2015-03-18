@@ -55,6 +55,11 @@ Notebook.prototype.attached = require( './lifecycle/attached.js' );
 Notebook.prototype.notesChanged = require( './watchers/notes.js' );
 
 
+// LISTENERS //
+
+Notebook.prototype.onRemoveIconClick = require( './listeners/removeIconClick.js' );
+
+
 // EXPORTS //
 
 module.exports = Notebook;

@@ -28,6 +28,13 @@
 
 'use strict';
 
+// MODULES //
+
+var isString = require( 'validate.io-string' );
+
+
+// MODE CHANGED //
+
 /**
 * FUNCTION: modeChanged( oldVal, newVal )
 *	Event handler for changes to a note mode.
@@ -38,13 +45,18 @@
 function modeChanged( oldVal, newVal ) {
 	/* jslint validthis:true */
 	var err;
-	if ( typeof newVal !== 'string' ) {
+	if ( !isString( newVal ) ) {
 		err = new TypeError( 'mode::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
 		this.fire( 'err', err );
 		this.mode = oldVal;
 		return;
 	}
-
+	// Update the editor...
+	if ( newVal === 'markdown' ) {
+		this.$.editor.mode = 'text';
+	} else {
+		this.$.editor.mode = newVal;
+	}
 	// TODO: change the renderer!!!
 
 	this.fire( 'change', {

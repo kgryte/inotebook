@@ -65,6 +65,9 @@ function create( ctx, el ) {
 	var editor, session;
 
 	editor = ace.edit( el );
+	editor.setOptions({
+		'maxLines': 100
+	});
 	editor.setFontSize( 16 );
 	editor.setBehavioursEnabled( true );
 	editor.setHighlightActiveLine( true );

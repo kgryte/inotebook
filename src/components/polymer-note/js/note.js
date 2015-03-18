@@ -57,6 +57,15 @@ function Note() {
 Note.prototype.mode = '';
 
 /**
+* ATTRIBUTE: name
+*	Note name.
+*
+* @type {String}
+* @default 'Note'
+*/
+Note.prototype.name = 'Note';
+
+/**
 * ATTRIBUTE: body
 *	Note body.
 *
@@ -64,6 +73,15 @@ Note.prototype.mode = '';
 * @default ''
 */
 Note.prototype.body = '';
+
+/**
+* ATTRIBUTE: hideEditor
+*	Toggles editor visibility.
+*
+* @type {Boolean}
+* @default false
+*/
+Note.prototype.hideEditor = false;
 
 
 // LIFECYCLE //
@@ -75,7 +93,18 @@ Note.prototype.attached = require( './lifecycle/attached.js' );
 
 Note.prototype.modeChanged = require( './watchers/mode.js' );
 
+Note.prototype.nameChanged = require( './watchers/name.js' );
+
 Note.prototype.bodyChanged = require( './watchers/body.js' );
+
+Note.prototype.hideEditorChanged = require( './watchers/hideEditor.js' );
+
+
+// LISTENERS //
+
+Note.prototype.onDoubleClick = require( './listeners/doubleClick.js' );
+
+Note.prototype.onRemoveIconClick = require( './listeners/removeIconClick.js' );
 
 
 // EXPORTS //

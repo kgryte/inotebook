@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/reset.css">
 		<link rel="stylesheet" type="text/css" href="./css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="./css/styles.css">
+		<link rel="stylesheet" type="text/css" href="./css/themes.css">
 
 		<!-- Load webcomponents.js for polyfill support -->
 		<script src="./bower/webcomponentsjs/webcomponents.js"></script>
@@ -20,11 +21,13 @@
 		<!-- Load components -->
 		<link rel="import" href="./components/polymer-nav-bar/polymer-nav-bar.html"/>
 		<link rel="import" href="./components/polymer-notebook/polymer-notebook.html"/>
+		<link rel="import" href="./components/polymer-footer/polymer-footer.html"/>
 	</head>
 	<body unresolved>
 
-		<polymer-nav-bar class="nav-bar" theme="dark-gray"></polymer-nav-bar>
+		<polymer-nav-bar class="nav-bar light-gray"></polymer-nav-bar>
 		<polymer-notebook class="notebook"></polymer-notebook>
+		<polymer-footer class="footer"></polymer-footer>
 
 		<!-- Scripts -->
 		<script src="./js/build.js"></script>

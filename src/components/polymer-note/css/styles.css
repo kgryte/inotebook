@@ -13,6 +13,53 @@
 	        box-sizing: border-box;
 }
 
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus {
+	outline: none;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	line-height: 17px;
+}
+
+li+li {
+	margin-left: 10px;
+}
+
+.right {
+	float: right;
+}
+
+.icon {
+	cursor: pointer;
+}
+
+.heading {
+	display: block;
+
+	width: 100%;
+
+	padding: 9px 10px 10px;
+
+	border: 1px solid;
+	border-color: #d8d8d8;
+	border-radius: 3px 3px 0 0;
+	border-bottom: none;
+
+	font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 17px;
+
+	background-color: #F5F5F5;
+}
+
 .editor,
 .print,
 .markdown,
@@ -21,16 +68,24 @@
 	height: auto;
 
 	border: 1px solid;
-	border-color: #eee;
-	border-radius: 5px;
+	border-color: #ddd;
 }
 
-.editor {
-	min-height: 200px;
+.editor,
+.markdown {
+	border-radius: 0 0 3px 3px;
 }
 
 .print,
-.markdown,
+.figure {
+	border-radius: 3px;
+}
+
+.editor {
+	min-height: 1em;
+}
+
+.print,
 .figure {
 	margin-top: 15px;
 }

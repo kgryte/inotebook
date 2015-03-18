@@ -1,8 +1,59 @@
 :host {
 	display: block;
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 2%;
+	padding-right: 2%;
+
+	font-size: 16px;
+	line-height: 1.4em;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 .nav {
 	width: 100%;
 	height: 100%;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	line-height: 1em;
+}
+
+li+li {
+	margin-left: 10px;
+}
+
+.right {
+	float: right;
+}
+
+.icon {
+	cursor: pointer;
+}
+
+.smaller {
+	font-size: 0.6em;
+}
+
+.pushed-up {
+	vertical-align: 5px;
+}
+
+.flush:before {
+	margin: 0;
+	margin-left: -0.2em;
 }

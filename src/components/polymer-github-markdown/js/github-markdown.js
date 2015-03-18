@@ -45,6 +45,23 @@ function Markdown() {
 } // end FUNCTION Markdown()
 
 
+// ATTRIBUTES //
+
+/**
+* ATTRIBUTE: body
+*	Markdown body.
+*
+* @type {String}
+* @default ''
+*/
+Markdown.prototype.body = '';
+
+
+// WATCHERS //
+
+Markdown.prototype.bodyChanged = require( './watchers/body.js' );
+
+
 // EXPORTS //
 
 module.exports = Markdown;

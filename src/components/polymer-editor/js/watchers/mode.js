@@ -28,6 +28,45 @@
 
 'use strict';
 
+// MODULES //
+
+var isString = require( 'validate.io-string' );
+
+
+// VARIABLES //
+
+var MODES = [
+	'javascript',
+	'text'
+];
+
+
+// FUNCTIONS //
+
+/**
+* FUNCTION: contains( arr, val )
+*	Validates if an array contains a specified value.
+*
+* @private
+* @param {Array} arr - input array
+* @param {*} val - search value
+* @returns {Boolean} boolean indicating if the array contains the specified value
+*/
+function contains( arr, val ) {
+	var len = arr.length,
+		i;
+
+	for ( i = 0; i < len; i++ ) {
+		if ( arr[ i ] === val ) {
+			return true;
+		}
+	}
+	return false;
+} // end METHOD contains()
+
+
+// MODE CHANGED //
+
 /**
 * FUNCTION: modeChanged( oldVal, newVal )
 *	Event handler for changes to editor mode.
@@ -37,21 +76,29 @@
 */
 function modeChanged( oldVal, newVal ) {
 	/* jslint validthis:true */
-	var err;
-	if ( typeof newVal !== 'string' ) {
+	var err,
+		val;
+	if ( !isString( newVal ) ) {
 		err = new TypeError( 'mode::invalid assignment. Must be a string. Value: `' + newVal + '`.' );
 		this.fire( 'err', err );
 		this.mode = oldVal;
 		return;
 	}
-	// TODO: validate allowed mode
-
-	this._editor.getSession().setMode( 'ace/mode/' + newVal );
+	// TODO: support aliases??
+	// TODO: Should we sanitize, e.g., convert to lowercase?
+	val = newVal.toLowerCase();
+	if ( !contains( MODES, val ) ) {
+		err = new Error( 'mode()::invalid assignment. Unsupported mode. Value: `' + newVal + '`.' );
+		this.fire( 'err', err );
+		this.mode = oldVal;
+		return;
+	}
+	this._editor.getSession().setMode( 'ace/mode/' + val );
 
 	this.fire( 'change', {
 		'attr': 'mode',
 		'prev': oldVal,
-		'curr': newVal
+		'curr': val
 	});
 } // end FUNCTION modeChanged()
 

@@ -23,16 +23,27 @@
 <link rel="import" href="../polymer-figure/polymer-figure.html">
 
 <!-- ELEMENT -->
-<polymer-element name="polymer-note" attributes="uid mode body">
+<polymer-element name="polymer-note" attributes="uid mode body name" on-dblclick="{{ onDoubleClick }}">
 
 	<template>
 
 		<!-- STYLESHEETS -->
 		<link rel="stylesheet" href="./css/reset.css">
 		<link rel="stylesheet" href="./css/styles.css">
+		<link rel="stylesheet" href="./css/font-awesome.css">
 
 		<!-- PRESENTATION CONTENT -->
-		<polymer-editor class="editor" id="editor" body="{{ body }}" hidden?="false"></polymer-editor>
+		<h3 class="heading" id="heading">
+			<ul class="right">
+				<li>
+					<i class="icon icon-cancel" on-click="{{ onRemoveIconClick }}"></i>
+				</li>
+			</ul>
+			<i class="icon-angle-right"></i>
+			<span contenteditable="true">{{ name }}</span>
+		</h3>
+		<polymer-editor class="editor" id="editor" body="{{ body }}" hidden?="{{ hideEditor }}"></polymer-editor>
+		<div id="output"></div>
 
 	</template>
 
