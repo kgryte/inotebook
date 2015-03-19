@@ -61,6 +61,8 @@ TODO
 24. ability to print workspace
 25. git commit from browser
 	-	akin to typical 'save', but with a commit message
+	-	every change & run
+		-	if no run but change, autosave after so many secs
 26. catch errors when executing
 	-	bubble back to user
 	-	error element
@@ -95,12 +97,16 @@ TODO
 39. btn tips
 40. d&d cells from other nbs
 41. med style comments?
-42. dropdown to create a new note of type X
-	-	see polymer core-dropdown
+42. convert nav-bar dd to polymer dd
+	-	see polymer core-dd
 43. nb cross communication via indexeddb...boom.
 44. sortable notes
 	- 	*sigh*...prob requires $
-45. 
+45. ability to track individual note diff
+	-	this could be tricky, but the granularity could be awesome
+46. keyboard shortcuts for creating new notes (taking into acct note mode)
+	-	will need to take into acct editor key bindings
+47. 
 
 
 
