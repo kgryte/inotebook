@@ -42,6 +42,9 @@
 			<i class="icon-angle-right"></i>
 			<span contenteditable="true">{{ name }}</span>
 		</h3>
+		<div class="bar">
+			<span class="progress lang-{{ mode }}"></span>
+		</div>
 		<polymer-editor class="editor" id="editor" body="{{ body }}" hidden?="{{ hideEditor }}"></polymer-editor>
 		<div id="output"></div>
 

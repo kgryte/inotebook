@@ -135,7 +135,10 @@ TODO
 	-	tests
 	-	...
 2. editor
-3. 
+3. note
+	-	move heading to separate component
+	-	lang/progress bar to separate component
+4. 
 
 
 

@@ -50007,21 +50007,24 @@ li+li {
 .heading {
 	display: block;
 
+	/* Size & position */
 	width: 100%;
 
 	padding: 9px 10px 10px;
 
+	/* Styles */
 	border: 1px solid;
 	border-color: #d8d8d8;
 	border-radius: 3px 3px 0 0;
 	border-bottom: none;
 
+	background-color: #F5F5F5;
+
+	/* Fonts */
 	font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 17px;
-
-	background-color: #F5F5F5;
 }
 
 .editor,
@@ -50061,6 +50064,47 @@ li+li {
 .markdown,
 .figure {
 	padding: 30px;
+}
+
+.bar {
+	height: 8px;
+	width: 100%;
+}
+
+/* When active/in-progress, display borders. Default, i.e., when progress is 100%, do not show borders. */
+.bar.active {
+	border-left: 1px solid;
+	border-left-color: #ddd;
+	border-right: 1px solid;
+	border-right-color: #ddd;
+}
+
+.bar .progress {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.bar .lang-markdown {
+	background-color: #4682B4;
+}
+
+.bar .lang-javascript {
+	background-color: #F1E05A;
+}
+
+/* TODO: confirm that the following will be/are used!!! */
+.bar .lang-shell {
+	background-color: #5861CE;
+}
+
+.bar .lang-tex {
+	background-color: #3D6117;
+}
+
+/* TODO: define! :) */
+.bar .lang-flow {
+	background-color: #474747;
 }
 </style>
 		<style>
@@ -50153,6 +50197,9 @@ li+li {
 			<i class="icon-angle-right"></i>
 			<span contenteditable="true">{{ name }}</span>
 		</h3>
+		<div class="bar">
+			<span class="progress lang-{{ mode }}"></span>
+		</div>
 		<polymer-editor class="editor" id="editor" body="{{ body }}" hidden?="{{ hideEditor }}"></polymer-editor>
 		<div id="output"></div>
 
@@ -58857,7 +58904,7 @@ function notesChanged( val, newVal ) {
 		this.notes.push({
 			'uid': Math.random(),
 			'name': 'Note',
-			'mode': 'javascript',
+			'mode': 'markdown',
 			'body': ''
 		});
 	}
