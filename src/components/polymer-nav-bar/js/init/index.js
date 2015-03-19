@@ -44,7 +44,10 @@ function init() {
 	this._topical = el.topical;
 
 	// Add topics:
-	this._topical.add( 'createnew.note' );
+	this._topical
+		.add( 'create.note.javascript' )
+		.add( 'create.note.markdown' )
+		.add( 'create.notebook' );
 
 	return this;
 } // end FUNCTION init()

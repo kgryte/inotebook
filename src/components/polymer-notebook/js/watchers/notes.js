@@ -60,7 +60,7 @@ function notesChanged( val, newVal ) {
 		this.notes.push({
 			'uid': Math.random(),
 			'name': 'Note',
-			'mode': 'javascript',
+			'mode': 'markdown',
 			'body': ''
 		});
 	}

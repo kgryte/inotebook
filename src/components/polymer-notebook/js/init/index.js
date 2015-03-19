@@ -48,8 +48,15 @@ function init() {
 	this._uuid = el.uuid;
 
 	// Add and subscribe to topics:
-	this._topical.add( 'createnew.note' );
-	this._topical.subscribe( 'createnew.note', this.createNote.bind( this ) );
+	this._topical
+		.add( 'create.note.markdown' )
+		.add( 'create.note.javascript' )
+		.add( 'create.notebook' );
+
+	this._topical
+		.subscribe( 'create.note.markdown', this.createMarkdown.bind( this ) )
+		.subscribe( 'create.note.javascript', this.createJavaScript.bind( this ) )
+		.subscribe( 'create.notebook', this.createNotebook.bind( this ) );
 
 	// FIXME
 	this.notes = [

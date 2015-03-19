@@ -19813,6 +19813,7 @@ table {
 	padding-left: 2%;
 	padding-right: 2%;
 
+	font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
 	font-size: 16px;
 	line-height: 1.4em;
 }
@@ -19844,6 +19845,11 @@ li+li {
 	margin-left: 10px;
 }
 
+li a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .right {
 	float: right;
 }
@@ -19864,13 +19870,125 @@ li+li {
 	margin: 0;
 	margin-left: -0.2em;
 }
+
+.dropdown-menu {
+	position: relative;
+	cursor: pointer;
+	outline: none;
+}
+
+.dropdown {
+	/* Size & position */
+	position: absolute;
+	top: 140%;
+	right: -3px;
+
+	width: 150px;
+
+	/* Styles */
+	list-style: none;
+
+	background: #FFF;
+
+	border: 1px solid;
+
+	/* FIXME: color is a theme value */
+	border-color: #ddd;
+	border-radius: 3px;
+
+	font-size: 14px;
+	font-weight: normal;
+
+	/* Hiding */
+	opacity: 0;
+	pointer-events: none;
+}
+
+.dropdown-menu.active .dropdown {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.dropdown li,
+.dropdown li a {
+	display: block;
+}
+
+.dropdown li+li {
+	margin: 0;
+}
+
+.dropdown li a {
+	/* Size & position */
+	padding: 10px;
+
+	/* Styles */
+	text-decoration: none;
+	color: #000;
+
+	border-bottom: 1px solid #F5F5F5;
+}
+
+.dropdown li:first-of-type a {
+    border-radius: 3px 3px 0 0;
+}
+
+.dropdown li:last-of-type a {
+    border-radius: 0 0 3px 3px;
+    border: none;
+}
+
+.dropdown:after {
+	content: "";
+
+	/* Size & position */
+	position: absolute;
+	bottom: 100%;
+	right: 11px;
+
+	width: 0;
+	height: 0;
+
+	/* Styles */
+	border-width: 0 6px 6px 6px;
+	border-style: solid;
+	border-color: #fff transparent;
+}
+
+.dropdown:before {
+	content: "";
+
+	/* Size & position */
+	position: absolute;
+	bottom: 100%;
+	right: 10px;
+
+	width: 0;
+	height: 0;
+
+	/* Styles */
+	border-width: 0 7px 7px 7px;
+	border-style: solid;
+	border-color: #ddd transparent;
+}
 </style>
 
 		<!-- PRESENTATION CONTENT -->
 		<nav class="nav" id="nav">
 			<ul class="right">
-				<li>
-					<i class="icon" on-click="{{ onCreateNew }}"><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></span></i>
+				<li class="dropdown-menu" id="createIcon">
+					<a href="#" on-click="{{ onCreateIconClick }}"><i class="icon"><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></span></i></a>
+					<ul class="dropdown">
+						<li>
+							<a href="#" on-click="{{ onCreateMarkdownClick }}">Markdown</a>
+						</li>
+						<li>
+							<a href="#" on-click="{{ onCreateJavaScriptClick }}">JavaScript</a>
+						</li>
+						<li>
+							<a href="#" on-click="{{ onCreateNotebookClick }}">Notebook</a>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</nav>
@@ -19925,7 +20043,10 @@ function init() {
 	this._topical = el.topical;
 
 	// Add topics:
-	this._topical.add( 'createnew.note' );
+	this._topical
+		.add( 'create.note.javascript' )
+		.add( 'create.note.markdown' )
+		.add( 'create.notebook' );
 
 	return this;
 } // end FUNCTION init()
@@ -19984,11 +20105,11 @@ module.exports = created;
 },{}],3:[function(require,module,exports){
 /**
 *
-*	FUNCTION: onCreateNew
+*	FUNCTION: onCreateIconClick
 *
 *
 *	DESCRIPTION:
-*		- Event listener for creating new notes.
+*		- Event listener invoked when a user `create` clicks a create icon.
 *
 *
 *	NOTES:
@@ -20013,34 +20134,204 @@ module.exports = created;
 'use strict';
 
 /**
-* FUNCTION: onCreateNew( evt, detail, sender )
-*	Event listener for creating new notes.
+* FUNCTION: onCreateIconClick( evt, detail, sender )
+*	Event listener invoked when a user clicks on a `create` icon.
 *
 * @param {Event} evt - standard event object
 * @param details - e.detail
 * @param {DOMElement} sender - reference to the node that declared the event handler
 */
-function onCreateNew( evt ) {
+function onCreateIconClick( evt ) {
 	/* jslint validthis:true */
 	evt.preventDefault();
-
-	// TODO: expand purview to creating notebooks
-
-	this._topical.publish( 'createnew.note', null );
-
-	// TODO: reconcile publish and emitting. Possibly, the base nav-bar class should fire and the descendant class should listen for this evt and publish on topical.
-
-	// this.fire( 'createnew.note', evt );
-	// this.fire( 'createnew', evt );
+	this.$.createIcon.classList.toggle( 'active' );
+	this.fire( 'clicked.createicon', evt );
 	return false;
-} // end FUNCTION onCreateNew()
+} // end FUNCTION onCreateIconClick()
 
 
 // EXPORTS //
 
-module.exports = onCreateNew;
+module.exports = onCreateIconClick;
 
 },{}],4:[function(require,module,exports){
+/**
+*
+*	FUNCTION: onCreateJavaScriptClick
+*
+*
+*	DESCRIPTION:
+*		- Event listener invoked when a user clicks to create a new JavaScript note.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: onCreateJavaScriptClick( evt, detail, sender )
+*	Event listener invoked when a user clicks to create a new JavaScript note.
+*
+* @param {Event} evt - standard event object
+* @param details - e.detail
+* @param {DOMElement} sender - reference to the node that declared the event handler
+*/
+function onCreateJavaScriptClick( evt ) {
+	/* jslint validthis:true */
+	evt.preventDefault();
+
+	this.$.createIcon.classList.toggle( 'active' );
+
+	this.fire( 'clicked.create.javascript', evt );
+
+	// TODO: move to descendant.
+	this._topical.publish( 'create.note.javascript', null );
+
+	// TODO: reconcile publish and emitting. Possibly, the base nav-bar class should fire and the descendant class should listen for this evt and publish on topical. => yes.
+	return false;
+} // end FUNCTION onCreateJavaScriptClick()
+
+
+// EXPORTS //
+
+module.exports = onCreateJavaScriptClick;
+
+},{}],5:[function(require,module,exports){
+/**
+*
+*	FUNCTION: onCreateMarkdownClick
+*
+*
+*	DESCRIPTION:
+*		- Event listener invoked when a user clicks to create a new Markdown note.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: onCreateMarkdownClick( evt, detail, sender )
+*	Event listener invoked when a user clicks to create a new Markdown note.
+*
+* @param {Event} evt - standard event object
+* @param details - e.detail
+* @param {DOMElement} sender - reference to the node that declared the event handler
+*/
+function onCreateMarkdownClick( evt ) {
+	/* jslint validthis:true */
+	evt.preventDefault();
+
+	this.$.createIcon.classList.toggle( 'active' );
+
+	this.fire( 'clicked.create.markdown', evt );
+
+	// TODO: move to descendant.
+	this._topical.publish( 'create.note.markdown', null );
+
+	// TODO: reconcile publish and emitting. Possibly, the base nav-bar class should fire and the descendant class should listen for this evt and publish on topical. => yes.
+	return false;
+} // end FUNCTION onCreateMarkdownClick()
+
+
+// EXPORTS //
+
+module.exports = onCreateMarkdownClick;
+
+},{}],6:[function(require,module,exports){
+/**
+*
+*	FUNCTION: onCreateNotebookClick
+*
+*
+*	DESCRIPTION:
+*		- Event listener invoked when a user clicks to create a new notebook.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: onCreateNotebookClick( evt, detail, sender )
+*	Event listener invoked when a user clicks to create a new notebook.
+*
+* @param {Event} evt - standard event object
+* @param details - e.detail
+* @param {DOMElement} sender - reference to the node that declared the event handler
+*/
+function onCreateNotebookClick( evt ) {
+	/* jslint validthis:true */
+	evt.preventDefault();
+
+	this.$.createIcon.classList.toggle( 'active' );
+
+	this.fire( 'clicked.create.notebook', evt );
+
+	// TODO: move to descendant.
+	this._topical.publish( 'create.notebook', null );
+
+	// TODO: reconcile publish and emitting. Possibly, the base nav-bar class should fire and the descendant class should listen for this evt and publish on topical. => yes.
+	return false;
+} // end FUNCTION onCreateNotebookClick()
+
+
+// EXPORTS //
+
+module.exports = onCreateNotebookClick;
+
+},{}],7:[function(require,module,exports){
 /**
 *
 *	NAVBAR
@@ -20100,14 +20391,20 @@ NavBar.prototype.init = require( './init' );
 
 // LISTENERS //
 
-NavBar.prototype.onCreateNew = require( './listeners/createNew.js' );
+NavBar.prototype.onCreateIconClick = require( './listeners/createIconClick.js' );
+
+NavBar.prototype.onCreateMarkdownClick = require( './listeners/createMarkdownClick.js' );
+
+NavBar.prototype.onCreateJavaScriptClick = require( './listeners/createJavaScriptClick.js' );
+
+NavBar.prototype.onCreateNotebookClick = require( './listeners/createNotebookClick.js' );
 
 
 // EXPORTS //
 
 module.exports = NavBar;
 
-},{"./init":1,"./lifecycle/created.js":2,"./listeners/createNew.js":3}],5:[function(require,module,exports){
+},{"./init":1,"./lifecycle/created.js":2,"./listeners/createIconClick.js":3,"./listeners/createJavaScriptClick.js":4,"./listeners/createMarkdownClick.js":5,"./listeners/createNotebookClick.js":6}],8:[function(require,module,exports){
 /**
 *
 *	COMPONENT: polymer-nav-bar
@@ -20148,7 +20445,7 @@ var NavBar = require( './navbar.js' );
 
 Polymer( 'polymer-nav-bar', NavBar.prototype );
 
-},{"./navbar.js":4}]},{},[5]);
+},{"./navbar.js":7}]},{},[8]);
 </script>
 
 </polymer-element>
@@ -50076,8 +50373,9 @@ function onRemoveIconClick( evt ) {
 	/* jslint validthis:true */
 	evt.preventDefault();
 	this.fire( 'clicked.removeicon', evt );
+	this.fire( 'removenote', evt );
 	return false;
-} // end FUNCTION onDoubleClick()
+} // end FUNCTION onRemoveIconClick()
 
 
 // EXPORTS //
@@ -57999,7 +58297,7 @@ table {
 
 		<!-- PRESENTATION CONTENT -->
 		<template repeat="{{ note in notes }}">
-			<polymer-note class="note" uid="{{ note.uid }}" mode="{{ note.mode }}" name="{{ note.name }}" body="{{ note.body }}" on-clicked.removeicon="{{ onRemoveIconClick }}"></polymer-note>
+			<polymer-note class="note" uid="{{ note.uid }}" mode="{{ note.mode }}" name="{{ note.name }}" body="{{ note.body }}" on-removenote="{{ onRemoveNote }}"></polymer-note>
 		</template>
 
 	</template>
@@ -58008,11 +58306,11 @@ table {
 	<script>(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
 *
-*	FUNCTION: createNote
+*	FUNCTION: createJavaScript
 *
 *
 *	DESCRIPTION:
-*		- Creates an empty note.
+*		- Creates an empty JavaScript note.
 *
 *
 *	NOTES:
@@ -58037,12 +58335,12 @@ table {
 'use strict';
 
 /**
-* FUNCTION: createNote()
-*	Creates an empty note.
+* FUNCTION: createJavaScript()
+*	Creates an empty JavaScript note.
 *
 * @returns {Object} context
 */
-function createNote() {
+function createJavaScript() {
 	/* jslint validthis:true */
 	this.notes.push({
 		'uid': this._uuid.v4(),
@@ -58050,15 +58348,125 @@ function createNote() {
 		'name': 'Note',
 		'body': ''
 	});
+
+	// TODO: emit an event announcing that we have created a new note
+
 	return this;
-} // end METHOD createNote()
+} // end METHOD createJavaScript()
 
 
 // EXPORTS //
 
-module.exports = createNote;
+module.exports = createJavaScript;
 
 },{}],2:[function(require,module,exports){
+/**
+*
+*	FUNCTION: createMarkdown
+*
+*
+*	DESCRIPTION:
+*		- Creates an empty Markdown note.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: createMarkdown()
+*	Creates an empty Markdown note.
+*
+* @returns {Object} context
+*/
+function createMarkdown() {
+	/* jslint validthis:true */
+	this.notes.push({
+		'uid': this._uuid.v4(),
+		'mode': 'markdown',
+		'name': 'Note',
+		'body': ''
+	});
+
+	// TODO: emit an event announcing that we have created a new note
+
+	return this;
+} // end METHOD createMarkdown()
+
+
+// EXPORTS //
+
+module.exports = createMarkdown;
+
+},{}],3:[function(require,module,exports){
+/**
+*
+*	FUNCTION: createNotebook
+*
+*
+*	DESCRIPTION:
+*		- Creates an empty notebook.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: createNotebook()
+*	Creates an empty notebook.
+*
+* @returns {Object} context
+*/
+function createNotebook() {
+	/* jslint validthis:true */
+
+	console.log( '...coming soon...' );
+	// TODO: emit an event announcing that we have created a new notebook
+
+	return this;
+} // end METHOD createNotebook()
+
+
+// EXPORTS //
+
+module.exports = createNotebook;
+
+},{}],4:[function(require,module,exports){
 /**
 *
 *	FUNCTION: init
@@ -58109,8 +58517,15 @@ function init() {
 	this._uuid = el.uuid;
 
 	// Add and subscribe to topics:
-	this._topical.add( 'createnew.note' );
-	this._topical.subscribe( 'createnew.note', this.createNote.bind( this ) );
+	this._topical
+		.add( 'create.note.markdown' )
+		.add( 'create.note.javascript' )
+		.add( 'create.notebook' );
+
+	this._topical
+		.subscribe( 'create.note.markdown', this.createMarkdown.bind( this ) )
+		.subscribe( 'create.note.javascript', this.createJavaScript.bind( this ) )
+		.subscribe( 'create.notebook', this.createNotebook.bind( this ) );
 
 	// FIXME
 	this.notes = [
@@ -58142,7 +58557,7 @@ function init() {
 
 module.exports = init;
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
 *
 *	FUNCTION: created
@@ -58188,14 +58603,14 @@ function created() {
 module.exports = created;
 
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
 *
-*	FUNCTION: onRemoveIconClick
+*	FUNCTION: onRemoveNote
 *
 *
 *	DESCRIPTION:
-*		- Event listener invoked when a user clicks a remove icon.
+*		- Event listener invoked when a note emits an event to remove itself from the list of notes.
 *
 *
 *	NOTES:
@@ -58220,14 +58635,14 @@ module.exports = created;
 'use strict';
 
 /**
-* FUNCTION: onRemoveIconClick( evt, detail, sender )
-*	Event listener invoked when a user clicks a remove icon.
+* FUNCTION: onRemoveNote( evt, detail, sender )
+*	Event listener invoked when a note emits a an event to remove itself from the list of notes.
 *
 * @param {Event} evt - standard event object
 * @param details - e.detail
 * @param {DOMElement} sender - reference to the node that declared the event handler
 */
-function onRemoveIconClick( evt ) {
+function onRemoveNote( evt ) {
 	/* jslint validthis:true */
 	var notes = this.notes,
 		len = notes.length,
@@ -58250,14 +58665,14 @@ function onRemoveIconClick( evt ) {
 	}
 	notes.splice( i, 1 );
 	return false;
-} // end FUNCTION onDoubleClick()
+} // end FUNCTION onRemoveNote()
 
 
 // EXPORTS //
 
-module.exports = onRemoveIconClick;
+module.exports = onRemoveNote;
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
 *
 *	NOTEBOOK
@@ -58317,7 +58732,11 @@ Notebook.prototype.init = require( './init' );
 
 // CREATE //
 
-Notebook.prototype.createNote = require( './create/note.js' );
+Notebook.prototype.createMarkdown = require( './create/markdown.js' );
+
+Notebook.prototype.createJavaScript = require( './create/javascript.js' );
+
+Notebook.prototype.createNotebook = require( './create/notebook.js' );
 
 
 // WATCHERS //
@@ -58327,14 +58746,14 @@ Notebook.prototype.notesChanged = require( './watchers/notes.js' );
 
 // LISTENERS //
 
-Notebook.prototype.onRemoveIconClick = require( './listeners/removeIconClick.js' );
+Notebook.prototype.onRemoveNote = require( './listeners/removeNote.js' );
 
 
 // EXPORTS //
 
 module.exports = Notebook;
 
-},{"./create/note.js":1,"./init":2,"./lifecycle/created.js":3,"./listeners/removeIconClick.js":4,"./watchers/notes.js":7}],6:[function(require,module,exports){
+},{"./create/javascript.js":1,"./create/markdown.js":2,"./create/notebook.js":3,"./init":4,"./lifecycle/created.js":5,"./listeners/removeNote.js":6,"./watchers/notes.js":9}],8:[function(require,module,exports){
 /**
 *
 *	COMPONENT: polymer-notebook
@@ -58375,7 +58794,7 @@ var Notebook = require( './notebook.js' );
 
 Polymer( 'polymer-notebook', Notebook.prototype );
 
-},{"./notebook.js":5}],7:[function(require,module,exports){
+},{"./notebook.js":7}],9:[function(require,module,exports){
 /**
 *
 *	FUNCTION: notesChanged
@@ -58464,7 +58883,7 @@ function notesChanged( val, newVal ) {
 
 module.exports = notesChanged;
 
-},{"validate.io-array":8}],8:[function(require,module,exports){
+},{"validate.io-array":10}],10:[function(require,module,exports){
 /**
 *
 *	VALIDATE: array
@@ -58513,7 +58932,7 @@ function isArray( value ) {
 
 module.exports = isArray;
 
-},{}]},{},[6]);
+},{}]},{},[8]);
 </script>
 
 </polymer-element>

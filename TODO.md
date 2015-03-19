@@ -95,7 +95,12 @@ TODO
 39. btn tips
 40. d&d cells from other nbs
 41. med style comments?
-42. 
+42. dropdown to create a new note of type X
+	-	see polymer core-dropdown
+43. nb cross communication via indexeddb...boom.
+44. sortable notes
+	- 	*sigh*...prob requires $
+45. 
 
 
 
@@ -115,8 +120,10 @@ TODO
 ### Components
 
 1. nav-bar
-	-	themeChanged
-		-	should ensure valid theme is provided
+	-	extract dropdown colors, etc, to theme styles
+		-	will need to think through how theming will work when extended to elements within shadow DOM
+	-	replace dropdown with core element
+		-	this should also allow removing the separate callbacks 
 	-	README
 	-	examples
 	-	tests
@@ -129,7 +136,10 @@ TODO
 ### Bugs
 
 1. When edit note title and repeatedly hit backspace, eventually move to left of icon
-2. 
+2. When display editor and rendered markdown, the containers are flush --> want slight margin similar to code and results
+3. On Markdown edit, the editor is initially blank until one clicks within the element
+4. On Markdown note, if have yet to render, am able to dblclick and hide the editor. Should only hide the editor if the content has been rendered
+5. 
 
 
 ### Tests

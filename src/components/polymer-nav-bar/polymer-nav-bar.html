@@ -32,8 +32,19 @@
 		<!-- PRESENTATION CONTENT -->
 		<nav class="nav" id="nav">
 			<ul class="right">
-				<li>
-					<i class="icon" on-click="{{ onCreateNew }}"><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></i>
+				<li class="dropdown-menu" id="createIcon">
+					<a href="#" on-click="{{ onCreateIconClick }}"><i class="icon"><span class="flush icon-plus"></span><span class="flush smaller pushed-up icon-down-dir"></i></a>
+					<ul class="dropdown">
+						<li>
+							<a href="#" on-click="{{ onCreateMarkdownClick }}">Markdown</a>
+						</li>
+						<li>
+							<a href="#" on-click="{{ onCreateJavaScriptClick }}">JavaScript</a>
+						</li>
+						<li>
+							<a href="#" on-click="{{ onCreateNotebookClick }}">Notebook</a>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</nav>

@@ -57,7 +57,11 @@ Notebook.prototype.init = require( './init' );
 
 // CREATE //
 
-Notebook.prototype.createNote = require( './create/note.js' );
+Notebook.prototype.createMarkdown = require( './create/markdown.js' );
+
+Notebook.prototype.createJavaScript = require( './create/javascript.js' );
+
+Notebook.prototype.createNotebook = require( './create/notebook.js' );
 
 
 // WATCHERS //
@@ -67,7 +71,7 @@ Notebook.prototype.notesChanged = require( './watchers/notes.js' );
 
 // LISTENERS //
 
-Notebook.prototype.onRemoveIconClick = require( './listeners/removeIconClick.js' );
+Notebook.prototype.onRemoveNote = require( './listeners/removeNote.js' );
 
 
 // EXPORTS //

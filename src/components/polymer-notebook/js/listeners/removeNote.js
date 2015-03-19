@@ -1,10 +1,10 @@
 /**
 *
-*	FUNCTION: onRemoveIconClick
+*	FUNCTION: onRemoveNote
 *
 *
 *	DESCRIPTION:
-*		- Event listener invoked when a user clicks a remove icon.
+*		- Event listener invoked when a note emits an event to remove itself from the list of notes.
 *
 *
 *	NOTES:
@@ -29,14 +29,14 @@
 'use strict';
 
 /**
-* FUNCTION: onRemoveIconClick( evt, detail, sender )
-*	Event listener invoked when a user clicks a remove icon.
+* FUNCTION: onRemoveNote( evt, detail, sender )
+*	Event listener invoked when a note emits a an event to remove itself from the list of notes.
 *
 * @param {Event} evt - standard event object
 * @param details - e.detail
 * @param {DOMElement} sender - reference to the node that declared the event handler
 */
-function onRemoveIconClick( evt ) {
+function onRemoveNote( evt ) {
 	/* jslint validthis:true */
 	var notes = this.notes,
 		len = notes.length,
@@ -59,9 +59,9 @@ function onRemoveIconClick( evt ) {
 	}
 	notes.splice( i, 1 );
 	return false;
-} // end FUNCTION onDoubleClick()
+} // end FUNCTION onRemoveNote()
 
 
 // EXPORTS //
 
-module.exports = onRemoveIconClick;
+module.exports = onRemoveNote;

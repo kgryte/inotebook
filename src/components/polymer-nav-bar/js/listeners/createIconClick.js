@@ -1,10 +1,10 @@
 /**
 *
-*	FUNCTION: onRemoveIconClick
+*	FUNCTION: onCreateIconClick
 *
 *
 *	DESCRIPTION:
-*		- Event listener invoked when a user clicks a remove icon.
+*		- Event listener invoked when a user `create` clicks a create icon.
 *
 *
 *	NOTES:
@@ -29,22 +29,22 @@
 'use strict';
 
 /**
-* FUNCTION: onRemoveIconClick( evt, detail, sender )
-*	Event listener invoked when a user clicks a remove icon.
+* FUNCTION: onCreateIconClick( evt, detail, sender )
+*	Event listener invoked when a user clicks on a `create` icon.
 *
 * @param {Event} evt - standard event object
 * @param details - e.detail
 * @param {DOMElement} sender - reference to the node that declared the event handler
 */
-function onRemoveIconClick( evt ) {
+function onCreateIconClick( evt ) {
 	/* jslint validthis:true */
 	evt.preventDefault();
-	this.fire( 'clicked.removeicon', evt );
-	this.fire( 'removenote', evt );
+	this.$.createIcon.classList.toggle( 'active' );
+	this.fire( 'clicked.createicon', evt );
 	return false;
-} // end FUNCTION onRemoveIconClick()
+} // end FUNCTION onCreateIconClick()
 
 
 // EXPORTS //
 
-module.exports = onRemoveIconClick;
+module.exports = onCreateIconClick;

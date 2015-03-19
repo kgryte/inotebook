@@ -1,10 +1,10 @@
 /**
 *
-*	FUNCTION: createNote
+*	FUNCTION: createMarkdown
 *
 *
 *	DESCRIPTION:
-*		- Creates an empty note.
+*		- Creates an empty Markdown note.
 *
 *
 *	NOTES:
@@ -29,23 +29,26 @@
 'use strict';
 
 /**
-* FUNCTION: createNote()
-*	Creates an empty note.
+* FUNCTION: createMarkdown()
+*	Creates an empty Markdown note.
 *
 * @returns {Object} context
 */
-function createNote() {
+function createMarkdown() {
 	/* jslint validthis:true */
 	this.notes.push({
 		'uid': this._uuid.v4(),
-		'mode': 'javascript',
+		'mode': 'markdown',
 		'name': 'Note',
 		'body': ''
 	});
+
+	// TODO: emit an event announcing that we have created a new note
+
 	return this;
-} // end METHOD createNote()
+} // end METHOD createMarkdown()
 
 
 // EXPORTS //
 
-module.exports = createNote;
+module.exports = createMarkdown;

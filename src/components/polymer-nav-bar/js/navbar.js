@@ -57,7 +57,13 @@ NavBar.prototype.init = require( './init' );
 
 // LISTENERS //
 
-NavBar.prototype.onCreateNew = require( './listeners/createNew.js' );
+NavBar.prototype.onCreateIconClick = require( './listeners/createIconClick.js' );
+
+NavBar.prototype.onCreateMarkdownClick = require( './listeners/createMarkdownClick.js' );
+
+NavBar.prototype.onCreateJavaScriptClick = require( './listeners/createJavaScriptClick.js' );
+
+NavBar.prototype.onCreateNotebookClick = require( './listeners/createNotebookClick.js' );
 
 
 // EXPORTS //
