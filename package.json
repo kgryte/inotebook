@@ -1,5 +1,5 @@
 {
-  "name": "nodebook",
+  "name": "inotebook",
   "version": "0.0.0",
   "description": "",
   "author": {
@@ -13,7 +13,7 @@
     }
   ],
   "bin": {
-    "nodebook": "./bin/server.js"
+    "inotebook": "./bin/server.js"
   },
   "scripts": {
     "start": "./bin/server.js | ./node_modules/.bin/bunyan",

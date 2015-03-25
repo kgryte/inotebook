@@ -31,6 +31,7 @@
 // MODULES //
 
 var isString = require( 'validate.io-string' ),
+	acorn = require( 'acorn' ),
 	md = require( 'markdown-it' )();
 
 
@@ -60,6 +61,8 @@ function bodyChanged( oldVal, newVal ) {
 	output = this.$.output;
 	if ( this.mode === 'javascript' ) {
 		// TODO: this is where the magic should occur when parsing the AST and generating the new code to be evaluated.
+
+		console.log( acorn.parse( newVal ) );
 
 		val = newVal;
 

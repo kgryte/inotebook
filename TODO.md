@@ -1,7 +1,11 @@
 TODO
 ====
 
-1. 
+1. remove any use of `.bind`
+	-	wrap clbks in fcns which use `self`
+	-	editor
+	-	notebook
+	-	...
 2. 
 3. README
 4. ability to require
