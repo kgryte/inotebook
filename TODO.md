@@ -16,16 +16,13 @@ TODO
 	- 	will need a way to keep track of these separate to actual package.json
 		-	in inb file, have imported modules
 		-	when load, these are downloaded, browserified, and shipped to the browser along with the notebook
-5. move protocol and port from `app/index.js`
-	-	make cmd line options
-6. make logger level a command-line option
-7. move away from a config file!!!
-	-	config node_module becomes more a parser for command-line arguments
-	-	see compute-mean
-8. ability to create an HTTPS server
+5. 
+6. 
+7. 
+8. 
 9. `/loglevel` route
 	-	allow for setting level for specific channels, multiple channels, etc. --> body would be an array; loop through array and set stream levels; '*' would indicate all streams.
-10. when setting loglevel, determine if can pass in any numeric value and it will work. If so, do not need `isInteger` check, but simply `isNumber`.
+10. 
 11. modularize monitor plugins
 	-	use compute modules
 	-	extract stats object to module to allow it to be stubbed using proxyquire
@@ -92,7 +89,10 @@ TODO
 34. fig component should have a chart type attr
 	-	dynamically create the desired chart type
 35. reserved words
-	-	table, plot, help, load
+	-	table
+	-	plot
+	-	help
+	-	load
 36. minify during build
 37. search (ES)
 	-	could perform in browser via worker
@@ -160,11 +160,7 @@ TODO
 
 #### Server
 
-1. log level validate --> other values!!!
-2. app/logger
-3. app/config
-4. middleware/index.js
-5. 
+1. 
 
 
 

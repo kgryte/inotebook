@@ -3,7 +3,7 @@
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 		<meta name="keywords" content="">
 
-		<title>Nodebook</title>
+		<title>iNotebook</title>
 
 		<!-- <link rel="shortcut icon" href="favicon.ico" /> -->
 
@@ -20356,7 +20356,7 @@ Topical.prototype.broadcast = function( event ) {
 module.exports = new Topical();
 module.exports.ctor = Topical;
 
-},{"events":3,"validate.io-integer":5,"validate.io-object":7}],5:[function(require,module,exports){
+},{"events":3,"validate.io-integer":5,"validate.io-object":8}],5:[function(require,module,exports){
 /**
 *
 *	VALIDATE: integer
@@ -20410,7 +20410,25 @@ function isInteger( value ) {
 
 module.exports = isInteger;
 
-},{"validate.io-number":6}],6:[function(require,module,exports){
+},{"validate.io-number":7}],6:[function(require,module,exports){
+'use strict';
+
+/**
+* FUNCTION: isArray( value )
+*	Validates if a value is an array.
+*
+* @param {*} value - value to be validated
+* @returns {Boolean} boolean indicating whether value is an array
+*/
+function isArray( value ) {
+	return Object.prototype.toString.call( value ) === '[object Array]';
+} // end FUNCTION isArray()
+
+// EXPORTS //
+
+module.exports = Array.isArray || isArray;
+
+},{}],7:[function(require,module,exports){
 /**
 *
 *	VALIDATE: number
@@ -20457,7 +20475,7 @@ function isNumber( value ) {
 
 module.exports = isNumber;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
 *
 *	VALIDATE: object
@@ -20511,25 +20529,7 @@ function isObject( value ) {
 
 module.exports = isObject;
 
-},{"validate.io-array":8}],8:[function(require,module,exports){
-'use strict';
-
-/**
-* FUNCTION: isArray( value )
-*	Validates if a value is an array.
-*
-* @param {*} value - value to be validated
-* @returns {Boolean} boolean indicating whether value is an array
-*/
-function isArray( value ) {
-	return Object.prototype.toString.call( value ) === '[object Array]';
-} // end FUNCTION isArray()
-
-// EXPORTS //
-
-module.exports = Array.isArray || isArray;
-
-},{}]},{},[1]);
+},{"validate.io-array":6}]},{},[1]);
 </script>
 
 </polymer-element>
@@ -62097,7 +62097,7 @@ compute.flow = createFlow( compute );
 
 module.exports = compute;
 
-},{"./flow.js":2,"compute-abs":4,"compute-add":5,"compute-argmax":6,"compute-argmin":7,"compute-argnanmax":8,"compute-argnanmin":9,"compute-circshift":10,"compute-cmax":12,"compute-cmin":13,"compute-covariance":14,"compute-cprod":15,"compute-cross":19,"compute-csum":20,"compute-datespace":21,"compute-deg2rad":23,"compute-diff":24,"compute-dims":25,"compute-divide":27,"compute-dot":28,"compute-eq":31,"compute-erf":32,"compute-erfc":33,"compute-erfcinv":34,"compute-erfinv":35,"compute-find":36,"compute-flatten":38,"compute-gcd":46,"compute-geq":51,"compute-gmean":56,"compute-gt":59,"compute-hamming":64,"compute-hmean":68,"compute-hypot":69,"compute-idr":70,"compute-incrdatespace":71,"compute-incrmax":72,"compute-incrmean":73,"compute-incrmin":74,"compute-incrmmean":75,"compute-incrmstdev":77,"compute-incrmsum":79,"compute-incrmvariance":81,"compute-incrspace":83,"compute-incrstdev":85,"compute-incrsum":86,"compute-incrvariance":87,"compute-indexspace":88,"compute-iqr":91,"compute-isfinite":92,"compute-isinf":93,"compute-isinteger":94,"compute-isnan":95,"compute-isnumeric":96,"compute-issorted":97,"compute-kurtosis":98,"compute-l1norm":99,"compute-l2norm":100,"compute-lcm":103,"compute-leq":108,"compute-linfnorm":113,"compute-linspace":114,"compute-lmidmean":116,"compute-logspace":117,"compute-lpnorm":119,"compute-lt":121,"compute-max":126,"compute-mean":127,"compute-median":128,"compute-midhinge":132,"compute-midmean":133,"compute-midrange":134,"compute-midsummary":135,"compute-min":136,"compute-mmax":137,"compute-mmean":138,"compute-mmin":144,"compute-mode":145,"compute-mprod":146,"compute-mstdev":150,"compute-msum":151,"compute-multiply":157,"compute-mvariance":158,"compute-nangmean":159,"compute-nanhmean":160,"compute-nanmax":161,"compute-nanmean":162,"compute-nanmedian":163,"compute-nanmin":166,"compute-nanprod":167,"compute-nanqmean":169,"compute-nanquantiles":170,"compute-nanrange":175,"compute-nanstdev":177,"compute-nansum":178,"compute-nanvariance":180,"compute-neq":181,"compute-pcorr":182,"compute-polynomial":183,"compute-prod":189,"compute-qmean":191,"compute-quantile":192,"compute-quantiles":193,"compute-rad2deg":195,"compute-range":196,"compute-reverse":199,"compute-roundn":202,"compute-shuffle":203,"compute-signum":204,"compute-skewness":208,"compute-sqrt":209,"compute-stdev":210,"compute-subtract":211,"compute-sum":212,"compute-trimean":214,"compute-truncmean":216,"compute-tversky-index":223,"compute-umidmean":229,"compute-unique":230,"compute-unzip":231,"compute-variance":236,"compute-wmean":240,"compute-zip":241}],4:[function(require,module,exports){
+},{"./flow.js":2,"compute-abs":4,"compute-add":5,"compute-argmax":6,"compute-argmin":7,"compute-argnanmax":8,"compute-argnanmin":9,"compute-circshift":10,"compute-cmax":12,"compute-cmin":13,"compute-covariance":14,"compute-cprod":15,"compute-cross":17,"compute-csum":18,"compute-datespace":19,"compute-deg2rad":21,"compute-diff":22,"compute-dims":23,"compute-divide":25,"compute-dot":26,"compute-eq":28,"compute-erf":29,"compute-erfc":30,"compute-erfcinv":31,"compute-erfinv":32,"compute-find":33,"compute-flatten":35,"compute-gcd":41,"compute-geq":45,"compute-gmean":48,"compute-gt":50,"compute-hamming":53,"compute-hmean":56,"compute-hypot":57,"compute-idr":58,"compute-incrdatespace":59,"compute-incrmax":60,"compute-incrmean":61,"compute-incrmin":62,"compute-incrmmean":63,"compute-incrmstdev":65,"compute-incrmsum":67,"compute-incrmvariance":69,"compute-incrspace":71,"compute-incrstdev":73,"compute-incrsum":74,"compute-incrvariance":75,"compute-indexspace":76,"compute-iqr":79,"compute-isfinite":80,"compute-isinf":81,"compute-isinteger":82,"compute-isnan":83,"compute-isnumeric":84,"compute-issorted":85,"compute-kurtosis":86,"compute-l1norm":87,"compute-l2norm":88,"compute-lcm":90,"compute-leq":94,"compute-linfnorm":97,"compute-linspace":98,"compute-lmidmean":100,"compute-logspace":101,"compute-lpnorm":103,"compute-lt":105,"compute-max":108,"compute-mean":109,"compute-median":110,"compute-midhinge":113,"compute-midmean":114,"compute-midrange":115,"compute-midsummary":116,"compute-min":117,"compute-mmax":118,"compute-mmean":119,"compute-mmin":123,"compute-mode":124,"compute-mprod":125,"compute-mstdev":128,"compute-msum":129,"compute-multiply":133,"compute-mvariance":134,"compute-nangmean":135,"compute-nanhmean":136,"compute-nanmax":137,"compute-nanmean":138,"compute-nanmedian":139,"compute-nanmin":141,"compute-nanprod":142,"compute-nanqmean":143,"compute-nanquantiles":144,"compute-nanrange":148,"compute-nanstdev":149,"compute-nansum":150,"compute-nanvariance":151,"compute-neq":152,"compute-pcorr":153,"compute-polynomial":154,"compute-prod":158,"compute-qmean":159,"compute-quantile":160,"compute-quantiles":161,"compute-rad2deg":163,"compute-range":164,"compute-reverse":166,"compute-roundn":167,"compute-shuffle":168,"compute-signum":169,"compute-skewness":171,"compute-sqrt":172,"compute-stdev":173,"compute-subtract":174,"compute-sum":175,"compute-trimean":176,"compute-truncmean":178,"compute-tversky-index":183,"compute-umidmean":188,"compute-unique":189,"compute-unzip":190,"compute-variance":194,"compute-wmean":196,"compute-zip":197}],4:[function(require,module,exports){
 /**
 *
 *	COMPUTE: abs
@@ -62648,7 +62648,7 @@ function isInteger( value ) {
 
 module.exports = isInteger;
 
-},{"validate.io-number":250}],12:[function(require,module,exports){
+},{"validate.io-number":205}],12:[function(require,module,exports){
 /**
 *
 *	COMPUTE: cmax
@@ -62939,7 +62939,7 @@ function covariance() {
 
 module.exports = covariance;
 
-},{"validate.io-object":251}],15:[function(require,module,exports){
+},{"validate.io-object":206}],15:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -63019,72 +63019,7 @@ function cprod( arr, opts ) {
 
 module.exports = cprod;
 
-},{"validate.io-array":16,"validate.io-boolean-primitive":17,"validate.io-function":18,"validate.io-object":251}],16:[function(require,module,exports){
-'use strict';
-
-/**
-* FUNCTION: isArray( value )
-*	Validates if a value is an array.
-*
-* @param {*} value - value to be validated
-* @returns {Boolean} boolean indicating whether value is an array
-*/
-function isArray( value ) {
-	return Object.prototype.toString.call( value ) === '[object Array]';
-} // end FUNCTION isArray()
-
-// EXPORTS //
-
-module.exports = Array.isArray || isArray;
-
-},{}],17:[function(require,module,exports){
-/**
-*
-*	VALIDATE: boolean-primitive
-*
-*
-*	DESCRIPTION:
-*		- Validates if a value is a boolean primitive.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
-'use strict';
-
-/**
-* FUNCTION: isBoolean( value )
-*	Validates if a value is a boolean primitive.
-*
-* @param {*} value - value to be validated
-* @returns {Boolean} boolean indicating if a value is a boolean primitive
-*/
-function isBoolean( value ) {
-	return value === true || value === false;
-} // end FUNCTION isBoolean()
-
-
-// EXPORTS //
-
-module.exports = isBoolean;
-
-},{}],18:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":16,"validate.io-object":206}],16:[function(require,module,exports){
 /**
 *
 *	VALIDATE: function
@@ -63131,7 +63066,7 @@ function isFunction( value ) {
 
 module.exports = isFunction;
 
-},{}],19:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
 *
 *	COMPUTE: cross
@@ -63194,7 +63129,7 @@ function cross( x, y ) {
 
 module.exports = cross;
 
-},{}],20:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /**
 *
 *	COMPUTE: csum
@@ -63251,7 +63186,7 @@ function csum( arr ) {
 
 module.exports = csum;
 
-},{}],21:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
 *
 *	COMPUTE: datespace
@@ -63421,9 +63356,9 @@ function datespace( start, stop, length, options ) {
 
 module.exports = datespace;
 
-},{"validate.io-integer":22,"validate.io-object":251}],22:[function(require,module,exports){
+},{"validate.io-integer":20,"validate.io-object":206}],20:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],23:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],21:[function(require,module,exports){
 /**
 *
 *	COMPUTE: deg2rad
@@ -63487,7 +63422,7 @@ function deg2rad( x ) {
 
 module.exports = deg2rad;
 
-},{}],24:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /**
 *
 *	COMPUTE: diff
@@ -63547,7 +63482,7 @@ module.exports = deg2rad;
 	module.exports = diff;
 
 })();
-},{}],25:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /**
 *
 *	COMPUTE: dims
@@ -63677,9 +63612,9 @@ function compute( arr, max ) {
 
 module.exports = compute;
 
-},{"validate.io-integer":26}],26:[function(require,module,exports){
+},{"validate.io-integer":24}],24:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],27:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],25:[function(require,module,exports){
 /**
 *
 *	COMPUTE: divide
@@ -63750,7 +63685,7 @@ function divide( arr, x ) {
 
 module.exports = divide;
 
-},{}],28:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -63809,11 +63744,9 @@ function dot( x, y, clbk ) {
 
 module.exports = dot;
 
-},{"validate.io-array":29,"validate.io-function":30}],29:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":27}],27:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],30:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],31:[function(require,module,exports){
+},{"dup":16}],28:[function(require,module,exports){
 /**
 *
 *	COMPUTE: eq
@@ -63939,7 +63872,7 @@ function eq( arr, x, opts ) {
 
 module.exports = eq;
 
-},{"validate.io-object":251}],32:[function(require,module,exports){
+},{"validate.io-object":206}],29:[function(require,module,exports){
 /**
 *
 *	COMPUTE: erf
@@ -64266,7 +64199,7 @@ module.exports = eq;
 	};
 
 })();
-},{}],33:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /**
 *
 *	COMPUTE: erfc
@@ -64592,7 +64525,7 @@ module.exports = eq;
 	};
 
 })();
-},{}],34:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 /**
 *
 *	COMPUTE: erfcinv
@@ -64948,7 +64881,7 @@ module.exports = eq;
 	};
 
 })();
-},{"compute-polynomial":183}],35:[function(require,module,exports){
+},{"compute-polynomial":154}],32:[function(require,module,exports){
 /**
 *
 *	COMPUTE: erfinv
@@ -65306,7 +65239,7 @@ module.exports = eq;
 	};
 
 })();
-},{"compute-polynomial":183}],36:[function(require,module,exports){
+},{"compute-polynomial":154}],33:[function(require,module,exports){
 /**
 *
 *	COMPUTE: find
@@ -65450,9 +65383,9 @@ function find( arr, opts, clbk ) {
 
 module.exports = find;
 
-},{"validate.io-integer":37,"validate.io-object":251}],37:[function(require,module,exports){
+},{"validate.io-integer":34,"validate.io-object":206}],34:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],38:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],35:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -65664,11 +65597,7 @@ function createFlatten( d, opts ) {
 module.exports = flatten;
 module.exports.createFlatten = createFlatten;
 
-},{"utils-copy":244,"validate.io-array":39,"validate.io-boolean-primitive":40,"validate.io-nonnegative-integer":41,"validate.io-object":251,"validate.io-positive-integer-array":43}],39:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],40:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],41:[function(require,module,exports){
+},{"utils-copy":198,"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-nonnegative-integer":36,"validate.io-object":206,"validate.io-positive-integer-array":38}],36:[function(require,module,exports){
 /**
 *
 *	VALIDATE: nonnegative-integer
@@ -65722,9 +65651,9 @@ function isNonNegativeInteger( value ) {
 
 module.exports = isNonNegativeInteger;
 
-},{"validate.io-integer":42}],42:[function(require,module,exports){
+},{"validate.io-integer":37}],37:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],43:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],38:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -65764,7 +65693,7 @@ function isPositiveIntegerArray( value ) {
 
 module.exports = isPositiveIntegerArray;
 
-},{"validate.io-array":39,"validate.io-positive-integer":44}],44:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-positive-integer":39}],39:[function(require,module,exports){
 /**
 *
 *	VALIDATE: positive-integer
@@ -65818,9 +65747,9 @@ function isPositiveInteger( value ) {
 
 module.exports = isPositiveInteger;
 
-},{"validate.io-integer":45}],45:[function(require,module,exports){
+},{"validate.io-integer":40}],40:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],46:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],41:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -66034,11 +65963,9 @@ function compute() {
 
 module.exports = compute;
 
-},{"validate.io-array":47,"validate.io-function":48,"validate.io-integer-array":49}],47:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":42,"validate.io-integer-array":43}],42:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],48:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],49:[function(require,module,exports){
+},{"dup":16}],43:[function(require,module,exports){
 /**
 *
 *	VALIDATE: integer-array
@@ -66106,9 +66033,9 @@ function isIntegerArray( value ) {
 
 module.exports = isIntegerArray;
 
-},{"validate.io-array":47,"validate.io-integer":50}],50:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-integer":44}],44:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],51:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],45:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -66234,13 +66161,9 @@ function geq( arr, x, opts ) {
 
 module.exports = geq;
 
-},{"validate.io-array":52,"validate.io-boolean-primitive":53,"validate.io-function":54,"validate.io-number-primitive":55,"validate.io-object":251,"validate.io-string-primitive":253}],52:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":46,"validate.io-number-primitive":47,"validate.io-object":206,"validate.io-string-primitive":207}],46:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],53:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],54:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],55:[function(require,module,exports){
+},{"dup":16}],47:[function(require,module,exports){
 /**
 *
 *	VALIDATE: number-primitive
@@ -66287,7 +66210,7 @@ function isNumber( value ) {
 
 module.exports = isNumber;
 
-},{}],56:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 /**
 *
 *	COMPUTE: gmean
@@ -66374,11 +66297,9 @@ function gmean( arr, clbk ) {
 
 module.exports = gmean;
 
-},{"validate.io-array":57,"validate.io-function":58}],57:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":49}],49:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],58:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],59:[function(require,module,exports){
+},{"dup":16}],50:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -66504,15 +66425,11 @@ function gt( arr, x, opts ) {
 
 module.exports = gt;
 
-},{"validate.io-array":60,"validate.io-boolean-primitive":61,"validate.io-function":62,"validate.io-number-primitive":63,"validate.io-object":251,"validate.io-string-primitive":253}],60:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":51,"validate.io-number-primitive":52,"validate.io-object":206,"validate.io-string-primitive":207}],51:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],61:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],62:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],63:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],64:[function(require,module,exports){
+},{"dup":16}],52:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],53:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -66579,11 +66496,9 @@ function hamming( a, b, clbk ) {
 
 module.exports = hamming;
 
-},{"validate.io-array":65,"validate.io-function":66,"validate.io-string":67}],65:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":54,"validate.io-string":55}],54:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],66:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],67:[function(require,module,exports){
+},{"dup":16}],55:[function(require,module,exports){
 /**
 *
 *	VALIDATE: string
@@ -66630,7 +66545,7 @@ function isString( value ) {
 
 module.exports = isString;
 
-},{}],68:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 /**
 *
 *	COMPUTE: hmean
@@ -66694,7 +66609,7 @@ module.exports = isString;
 	module.exports = hmean;
 
 })();
-},{}],69:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 /**
 *
 *	COMPUTE: hypot
@@ -66765,7 +66680,7 @@ module.exports = isString;
 	module.exports = hypot;
 
 })();
-},{"validate.io-number":250}],70:[function(require,module,exports){
+},{"validate.io-number":205}],58:[function(require,module,exports){
 /**
 *
 *	COMPUTE: idr
@@ -66854,7 +66769,7 @@ function idr( arr, opts ) {
 
 module.exports = idr;
 
-},{"compute-quantile":192,"validate.io-object":251}],71:[function(require,module,exports){
+},{"compute-quantile":160,"validate.io-object":206}],59:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrdatespace
@@ -67143,7 +67058,7 @@ function incrdatespace( start, stop, increment, options ) {
 
 module.exports = incrdatespace;
 
-},{"validate.io-object":251}],72:[function(require,module,exports){
+},{"validate.io-object":206}],60:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmax
@@ -67209,7 +67124,7 @@ module.exports = incrdatespace;
 	module.exports = incrmax;
 
 })();
-},{}],73:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmean
@@ -67275,7 +67190,7 @@ function incrmean() {
 
 module.exports = incrmean;
 
-},{}],74:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmin
@@ -67341,7 +67256,7 @@ module.exports = incrmean;
 	module.exports = incrmin;
 
 })();
-},{}],75:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmmean
@@ -67434,9 +67349,9 @@ function incrmmean( W ) {
 
 module.exports = incrmmean;
 
-},{"validate.io-integer":76}],76:[function(require,module,exports){
+},{"validate.io-integer":64}],64:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],77:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],65:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmstdev
@@ -67550,9 +67465,9 @@ function incrmstdev( W ) {
 
 module.exports = incrmstdev;
 
-},{"validate.io-integer":78}],78:[function(require,module,exports){
+},{"validate.io-integer":66}],66:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],79:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],67:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmsum
@@ -67642,9 +67557,9 @@ function incrmsum( W ) {
 
 module.exports = incrmsum;
 
-},{"validate.io-integer":80}],80:[function(require,module,exports){
+},{"validate.io-integer":68}],68:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],81:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],69:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrmvariance
@@ -67758,9 +67673,9 @@ function incrmvariance( W ) {
 
 module.exports = incrmvariance;
 
-},{"validate.io-integer":82}],82:[function(require,module,exports){
+},{"validate.io-integer":70}],70:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],83:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],71:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -67833,9 +67748,9 @@ function incrspace( x1, x2, increment ) {
 
 module.exports = incrspace;
 
-},{"validate.io-number-primitive":84}],84:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],85:[function(require,module,exports){
+},{"validate.io-number-primitive":72}],72:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],73:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrstdev
@@ -67911,7 +67826,7 @@ arguments[4][55][0].apply(exports,arguments)
 	module.exports = incrstdev;
 
 })();
-},{}],86:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrsum
@@ -67975,7 +67890,7 @@ arguments[4][55][0].apply(exports,arguments)
 	module.exports = incrsum;
 
 })();
-},{}],87:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 /**
 *
 *	COMPUTE: incrvariance
@@ -68051,7 +67966,7 @@ arguments[4][55][0].apply(exports,arguments)
 	module.exports = incrvariance;
 
 })();
-},{}],88:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /**
 *
 *	COMPUTE: indexspace
@@ -68324,11 +68239,11 @@ function indexspace( str, len ) {
 
 module.exports = indexspace;
 
-},{"validate.io-nonnegative-integer":89,"validate.io-string-primitive":253}],89:[function(require,module,exports){
-arguments[4][41][0].apply(exports,arguments)
-},{"dup":41,"validate.io-integer":90}],90:[function(require,module,exports){
+},{"validate.io-nonnegative-integer":77,"validate.io-string-primitive":207}],77:[function(require,module,exports){
+arguments[4][36][0].apply(exports,arguments)
+},{"dup":36,"validate.io-integer":78}],78:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],91:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],79:[function(require,module,exports){
 /**
 *
 *	COMPUTE: iqr
@@ -68416,7 +68331,7 @@ function iqr( arr, opts ) {
 
 module.exports = iqr;
 
-},{"compute-quantile":192,"validate.io-object":251}],92:[function(require,module,exports){
+},{"compute-quantile":160,"validate.io-object":206}],80:[function(require,module,exports){
 /**
 *
 *	COMPUTE: isfinite
@@ -68485,7 +68400,7 @@ function isfinite( arr ) {
 
 module.exports = isfinite;
 
-},{}],93:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /**
 *
 *	COMPUTE: isinf
@@ -68554,7 +68469,7 @@ function isinf( arr ) {
 
 module.exports = isinf;
 
-},{}],94:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 /**
 *
 *	COMPUTE: isinteger
@@ -68617,7 +68532,7 @@ function isinteger( arr ) {
 
 module.exports = isinteger;
 
-},{}],95:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 /**
 *
 *	COMPUTE: isnan
@@ -68680,7 +68595,7 @@ function isnan( arr ) {
 
 module.exports = isnan;
 
-},{}],96:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 /**
 *
 *	COMPUTE: isnumeric
@@ -68743,7 +68658,7 @@ function isnumeric( arr ) {
 
 module.exports = isnumeric;
 
-},{}],97:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 /**
 *
 *	COMPUTE: issorted
@@ -68818,7 +68733,7 @@ function issorted( arr, clbk ) {
 
 module.exports = issorted;
 
-},{}],98:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 /**
 *
 *	COMPUTE: kurtosis
@@ -68899,7 +68814,7 @@ module.exports = issorted;
 	module.exports = kurtosis;
 
 })();
-},{}],99:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /**
 *
 *	COMPUTE: l1norm
@@ -68964,7 +68879,7 @@ module.exports = issorted;
 	module.exports = l1norm;
 
 })();
-},{}],100:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -69042,11 +68957,9 @@ function l2norm( arr, clbk ) {
 
 module.exports = l2norm;
 
-},{"validate.io-array":101,"validate.io-function":102}],101:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":89}],89:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],102:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],103:[function(require,module,exports){
+},{"dup":16}],90:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -69159,15 +69072,13 @@ function lcm() {
 
 module.exports = lcm;
 
-},{"compute-gcd":46,"validate.io-array":104,"validate.io-function":105,"validate.io-integer-array":106}],104:[function(require,module,exports){
+},{"compute-gcd":41,"validate.io-array":203,"validate.io-function":91,"validate.io-integer-array":92}],91:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],105:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],106:[function(require,module,exports){
-arguments[4][49][0].apply(exports,arguments)
-},{"dup":49,"validate.io-array":104,"validate.io-integer":107}],107:[function(require,module,exports){
+},{"dup":16}],92:[function(require,module,exports){
+arguments[4][43][0].apply(exports,arguments)
+},{"dup":43,"validate.io-array":203,"validate.io-integer":93}],93:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],108:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],94:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -69294,15 +69205,11 @@ function leq( arr, x, opts ) {
 module.exports = leq;
 
 
-},{"validate.io-array":109,"validate.io-boolean-primitive":110,"validate.io-function":111,"validate.io-number-primitive":112,"validate.io-object":251,"validate.io-string-primitive":253}],109:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":95,"validate.io-number-primitive":96,"validate.io-object":206,"validate.io-string-primitive":207}],95:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],110:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],111:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],112:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],113:[function(require,module,exports){
+},{"dup":16}],96:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],97:[function(require,module,exports){
 /**
 *
 *	COMPUTE: linfnorm
@@ -69373,7 +69280,7 @@ arguments[4][55][0].apply(exports,arguments)
 	module.exports = linfnorm;
 
 })();
-},{}],114:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 /**
 *
 *	COMPUTE: linspace
@@ -69463,9 +69370,9 @@ function linspace( x1, x2, len ) {
 
 module.exports = linspace;
 
-},{"validate.io-integer":115}],115:[function(require,module,exports){
+},{"validate.io-integer":99}],99:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],116:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],100:[function(require,module,exports){
 /**
 *
 *	COMPUTE: lmidmean
@@ -69568,7 +69475,7 @@ function lmidmean( arr, sorted ) {
 
 module.exports = lmidmean;
 
-},{}],117:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 /**
 *
 *	COMPUTE: logspace
@@ -69658,9 +69565,9 @@ function logspace( a, b, len ) {
 
 module.exports = logspace;
 
-},{"validate.io-integer":118}],118:[function(require,module,exports){
+},{"validate.io-integer":102}],102:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],119:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],103:[function(require,module,exports){
 /**
 *
 *	COMPUTE: lpnorm
@@ -69748,9 +69655,9 @@ arguments[4][11][0].apply(exports,arguments)
 	module.exports = lpnorm;
 
 })();
-},{"compute-l1norm":99,"compute-l2norm":100,"compute-linfnorm":113,"validate.io-integer":120}],120:[function(require,module,exports){
+},{"compute-l1norm":87,"compute-l2norm":88,"compute-linfnorm":97,"validate.io-integer":104}],104:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],121:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],105:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -69876,15 +69783,11 @@ function lt( arr, x, opts ) {
 
 module.exports = lt;
 
-},{"validate.io-array":122,"validate.io-boolean-primitive":123,"validate.io-function":124,"validate.io-number-primitive":125,"validate.io-object":251,"validate.io-string-primitive":253}],122:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":106,"validate.io-number-primitive":107,"validate.io-object":206,"validate.io-string-primitive":207}],106:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],123:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],124:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],125:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],126:[function(require,module,exports){
+},{"dup":16}],107:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],108:[function(require,module,exports){
 /**
 *
 *	COMPUTE: max
@@ -69942,7 +69845,7 @@ function max( arr ) {
 
 module.exports = max;
 
-},{}],127:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mean
@@ -70006,7 +69909,7 @@ module.exports = max;
 	module.exports = mean;
 
 })();
-},{}],128:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 /**
 *
 *	COMPUTE: median
@@ -70138,9 +70041,7 @@ function median( arr, options ) {
 
 module.exports = median;
 
-},{"validate.io-array":129,"validate.io-boolean":130,"validate.io-function":131,"validate.io-object":251}],129:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],130:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean":111,"validate.io-function":112,"validate.io-object":206}],111:[function(require,module,exports){
 /**
 *
 *	VALIDATE: boolean
@@ -70186,9 +70087,9 @@ function isBoolean( value ) {
 // EXPORTS //
 
 module.exports = isBoolean;
-},{}],131:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],132:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
+arguments[4][16][0].apply(exports,arguments)
+},{"dup":16}],113:[function(require,module,exports){
 /**
 *
 *	COMPUTE: midhinge
@@ -70277,7 +70178,7 @@ function midhinge( arr, opts ) {
 
 module.exports = midhinge;
 
-},{"compute-quantile":192,"validate.io-object":251}],133:[function(require,module,exports){
+},{"compute-quantile":160,"validate.io-object":206}],114:[function(require,module,exports){
 /**
 *
 *	COMPUTE: midmean
@@ -70379,7 +70280,7 @@ function midmean( arr, sorted ) {
 
 module.exports = midmean;
 
-},{}],134:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 /**
 *
 *	COMPUTE: midrange
@@ -70458,7 +70359,7 @@ function midrange( arr, sorted ) {
 module.exports = midrange;
 
 
-},{}],135:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 /**
 *
 *	COMPUTE: midsummary
@@ -70574,7 +70475,7 @@ function midsummary( arr, n, opts ) {
 
 module.exports = midsummary;
 
-},{"compute-quantile":192,"validate.io-object":251}],136:[function(require,module,exports){
+},{"compute-quantile":160,"validate.io-object":206}],117:[function(require,module,exports){
 /**
 *
 *	COMPUTE: min
@@ -70632,7 +70533,7 @@ function min( arr ) {
 
 module.exports = min;
 
-},{}],137:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mmax
@@ -70733,7 +70634,7 @@ module.exports = min;
 	module.exports = mmax;
 
 })();
-},{}],138:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mmean
@@ -70891,17 +70792,13 @@ function mmean( arr , W, options ) {
 
 module.exports = mmean;
 
-},{"validate.io-array":139,"validate.io-boolean-primitive":140,"validate.io-function":141,"validate.io-object":251,"validate.io-positive-integer":142}],139:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":120,"validate.io-object":206,"validate.io-positive-integer":121}],120:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],140:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],141:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],142:[function(require,module,exports){
-arguments[4][44][0].apply(exports,arguments)
-},{"dup":44,"validate.io-integer":143}],143:[function(require,module,exports){
+},{"dup":16}],121:[function(require,module,exports){
+arguments[4][39][0].apply(exports,arguments)
+},{"dup":39,"validate.io-integer":122}],122:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],144:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],123:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mmin
@@ -71004,7 +70901,7 @@ arguments[4][11][0].apply(exports,arguments)
 	module.exports = mmin;
 
 })();
-},{}],145:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mode
@@ -71077,7 +70974,7 @@ arguments[4][11][0].apply(exports,arguments)
 	module.exports = mode;
 
 })();
-},{}],146:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mprod
@@ -71185,13 +71082,11 @@ function mprod( arr, W, clbk ) {
 
 module.exports = mprod;
 
-},{"validate.io-array":147,"validate.io-positive-integer":148}],147:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],148:[function(require,module,exports){
-arguments[4][44][0].apply(exports,arguments)
-},{"dup":44,"validate.io-integer":149}],149:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-positive-integer":126}],126:[function(require,module,exports){
+arguments[4][39][0].apply(exports,arguments)
+},{"dup":39,"validate.io-integer":127}],127:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],150:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],128:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mstdev
@@ -71293,7 +71188,7 @@ function mstdev( arr, W ) {
 
 module.exports = mstdev;
 
-},{}],151:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 /**
 *
 *	COMPUTE: msum
@@ -71446,17 +71341,13 @@ function msum( arr, W, options ) {
 module.exports = msum;
 
 
-},{"validate.io-array":152,"validate.io-boolean-primitive":153,"validate.io-function":154,"validate.io-object":251,"validate.io-positive-integer":155}],152:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":130,"validate.io-object":206,"validate.io-positive-integer":131}],130:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],153:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],154:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],155:[function(require,module,exports){
-arguments[4][44][0].apply(exports,arguments)
-},{"dup":44,"validate.io-integer":156}],156:[function(require,module,exports){
+},{"dup":16}],131:[function(require,module,exports){
+arguments[4][39][0].apply(exports,arguments)
+},{"dup":39,"validate.io-integer":132}],132:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],157:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],133:[function(require,module,exports){
 /**
 *
 *	COMPUTE: multiply
@@ -71527,7 +71418,7 @@ function multiply( arr, x ) {
 
 module.exports = multiply;
 
-},{}],158:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 /**
 *
 *	COMPUTE: mvariance
@@ -71629,7 +71520,7 @@ function mvariance( arr , W ) {
 
 module.exports = mvariance;
 
-},{}],159:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nangmean
@@ -71699,7 +71590,7 @@ module.exports = mvariance;
 	module.exports = nangmean;
 
 })();
-},{}],160:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanhmean
@@ -71768,7 +71659,7 @@ module.exports = mvariance;
 	module.exports = nanhmean;
 
 })();
-},{}],161:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanmax
@@ -71831,7 +71722,7 @@ function nanmax( arr ) {
 
 module.exports = nanmax;
 
-},{}],162:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanmean
@@ -71900,7 +71791,7 @@ module.exports = nanmax;
 	module.exports = nanmean;
 
 })();
-},{}],163:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanmedian
@@ -72024,11 +71915,9 @@ function nanmedian( arr, options ) {
 
 module.exports = nanmedian;
 
-},{"validate.io-array":164,"validate.io-boolean":165,"validate.io-number":250,"validate.io-object":251}],164:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],165:[function(require,module,exports){
-arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],166:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean":140,"validate.io-number":205,"validate.io-object":206}],140:[function(require,module,exports){
+arguments[4][111][0].apply(exports,arguments)
+},{"dup":111}],141:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanmin
@@ -72091,7 +71980,7 @@ function nanmin( arr ) {
 
 module.exports = nanmin;
 
-},{}],167:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanprod
@@ -72191,9 +72080,7 @@ function nanprod( arr, clbk ) {
 
 module.exports = nanprod;
 
-},{"validate.io-array":168,"validate.io-number":250}],168:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],169:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-number":205}],143:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanqmean
@@ -72275,7 +72162,7 @@ arguments[4][16][0].apply(exports,arguments)
 	module.exports = nanqmean;
 
 })();
-},{}],170:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanquantiles
@@ -72424,15 +72311,13 @@ function nanquantiles( arr, num, opts ) {
 
 module.exports = nanquantiles;
 
-},{"validate.io-array":171,"validate.io-boolean":172,"validate.io-nonnegative-integer":173,"validate.io-number":250,"validate.io-object":251}],171:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],172:[function(require,module,exports){
-arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],173:[function(require,module,exports){
-arguments[4][41][0].apply(exports,arguments)
-},{"dup":41,"validate.io-integer":174}],174:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean":145,"validate.io-nonnegative-integer":146,"validate.io-number":205,"validate.io-object":206}],145:[function(require,module,exports){
+arguments[4][111][0].apply(exports,arguments)
+},{"dup":111}],146:[function(require,module,exports){
+arguments[4][36][0].apply(exports,arguments)
+},{"dup":36,"validate.io-integer":147}],147:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],175:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],148:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanrange
@@ -72516,9 +72401,7 @@ function nanrange( arr, clbk ) {
 
 module.exports = nanrange;
 
-},{"validate.io-array":176,"validate.io-number":250}],176:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],177:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-number":205}],149:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanstdev
@@ -72592,7 +72475,7 @@ arguments[4][16][0].apply(exports,arguments)
 	module.exports = nanstdev;
 
 })();
-},{}],178:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nansum
@@ -72680,9 +72563,7 @@ function nansum( arr, clbk ) {
 
 module.exports = nansum;
 
-},{"validate.io-array":179,"validate.io-number":250}],179:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],180:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-number":205}],151:[function(require,module,exports){
 /**
 *
 *	COMPUTE: nanvariance
@@ -72756,7 +72637,7 @@ arguments[4][16][0].apply(exports,arguments)
 	module.exports = nanvariance;
 
 })();
-},{}],181:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 /**
 *
 *	COMPUTE: neq
@@ -72882,7 +72763,7 @@ function neq( arr, x, opts ) {
 
 module.exports = neq;
 
-},{"validate.io-object":251}],182:[function(require,module,exports){
+},{"validate.io-object":206}],153:[function(require,module,exports){
 /**
 *
 *	COMPUTE: pcorr
@@ -73060,7 +72941,7 @@ function pcorr() {
 
 module.exports = pcorr;
 
-},{}],183:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -73171,13 +73052,9 @@ function evaluate( c, x, opts ) {
 
 module.exports = evaluate;
 
-},{"validate.io-array":184,"validate.io-boolean-primitive":185,"validate.io-function":186,"validate.io-number-primitive":188,"validate.io-number-primitive-array":187,"validate.io-object":251}],184:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":155,"validate.io-number-primitive":157,"validate.io-number-primitive-array":156,"validate.io-object":206}],155:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],185:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],186:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],187:[function(require,module,exports){
+},{"dup":16}],156:[function(require,module,exports){
 /**
 *
 *	VALIDATE: number-primitive-array
@@ -73245,9 +73122,9 @@ function isNumberArray( value ) {
 
 module.exports = isNumberArray;
 
-},{"validate.io-array":184}],188:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],189:[function(require,module,exports){
+},{"validate.io-array":203}],157:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],158:[function(require,module,exports){
 /**
 *
 *	COMPUTE: prod
@@ -73334,9 +73211,7 @@ function prod( arr, clbk ) {
 
 module.exports = prod;
 
-},{"validate.io-array":190}],190:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],191:[function(require,module,exports){
+},{"validate.io-array":203}],159:[function(require,module,exports){
 /**
 *
 *	COMPUTE: qmean
@@ -73413,7 +73288,7 @@ arguments[4][16][0].apply(exports,arguments)
 	module.exports = qmean;
 
 })();
-},{}],192:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 /**
 *
 *	COMPUTE: quantile
@@ -73539,7 +73414,7 @@ function quantile( arr, p, opts ) {
 
 module.exports = quantile;
 
-},{"validate.io-object":251}],193:[function(require,module,exports){
+},{"validate.io-object":206}],161:[function(require,module,exports){
 /**
 *
 *	COMPUTE: quantiles
@@ -73665,9 +73540,9 @@ function quantiles( arr, num, opts ) {
 
 module.exports = quantiles;
 
-},{"validate.io-integer":194,"validate.io-object":251}],194:[function(require,module,exports){
+},{"validate.io-integer":162,"validate.io-object":206}],162:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],195:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],163:[function(require,module,exports){
 /**
 *
 *	COMPUTE: rad2deg
@@ -73731,7 +73606,7 @@ function rad2deg( x ) {
 
 module.exports = rad2deg;
 
-},{}],196:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 /**
 *
 *	COMPUTE: range
@@ -73825,11 +73700,9 @@ function range( arr, clbk ) {
 
 module.exports = range;
 
-},{"validate.io-array":197,"validate.io-function":198}],197:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-function":165}],165:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],198:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],199:[function(require,module,exports){
+},{"dup":16}],166:[function(require,module,exports){
 'use strict';
 
 // MODULES //
@@ -73897,11 +73770,7 @@ function reverse( arr, opts ) {
 
 module.exports = reverse;
 
-},{"validate.io-array":200,"validate.io-boolean-primitive":201,"validate.io-object":251}],200:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],201:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],202:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-object":206}],167:[function(require,module,exports){
 /**
 *
 *	COMPUTE: roundn
@@ -73970,7 +73839,7 @@ function roundn( x, n ) {
 
 module.exports = roundn;
 
-},{}],203:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 /**
 *
 *	COMPUTE: shuffle
@@ -74036,7 +73905,7 @@ module.exports = roundn;
 	module.exports = shuffle;
 
 })();
-},{}],204:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 'use strict';
 
 // MODULES
@@ -74142,13 +74011,9 @@ module.exports = function( x, opts ) {
 	return arr;
 }; // end FUNCTION signum()
 
-},{"validate.io-array":205,"validate.io-boolean-primitive":206,"validate.io-function":207,"validate.io-object":251}],205:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":170,"validate.io-object":206}],170:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],206:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],207:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],208:[function(require,module,exports){
+},{"dup":16}],171:[function(require,module,exports){
 /**
 *
 *	COMPUTE: skewness
@@ -74225,7 +74090,7 @@ arguments[4][18][0].apply(exports,arguments)
 	module.exports = skewness;
 
 })();
-},{}],209:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 /**
 *
 *	COMPUTE: sqrt
@@ -74279,7 +74144,7 @@ function sqrt( arr ) {
 
 module.exports = sqrt;
 
-},{}],210:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 /**
 *
 *	COMPUTE: stdev
@@ -74346,7 +74211,7 @@ module.exports = sqrt;
 	module.exports = stdev;
 
 })();
-},{}],211:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 /**
 *
 *	COMPUTE: subtract
@@ -74417,7 +74282,7 @@ function subtract( arr, x ) {
 
 module.exports = subtract;
 
-},{}],212:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 /**
 *
 *	COMPUTE: sum
@@ -74495,9 +74360,7 @@ function sum( arr, clbk ) {
 
 module.exports = sum;
 
-},{"validate.io-array":213}],213:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],214:[function(require,module,exports){
+},{"validate.io-array":203}],176:[function(require,module,exports){
 /**
 *
 *	COMPUTE: trimean
@@ -74590,7 +74453,7 @@ function trimean( arr, opts ) {
 // EXPORTS //
 module.exports = trimean;
 
-},{"compute-median":215,"compute-quantile":192,"validate.io-object":251}],215:[function(require,module,exports){
+},{"compute-median":177,"compute-quantile":160,"validate.io-object":206}],177:[function(require,module,exports){
 /**
 *
 *	COMPUTE: median
@@ -74678,7 +74541,7 @@ function median( arr, sorted ) {
 
 module.exports = median;
 
-},{}],216:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 /**
 *
 *	COMPUTE: truncmean
@@ -74895,19 +74758,15 @@ function truncmean( arr, discard, options ) {
 
 module.exports = truncmean;
 
-},{"validate.io-array":217,"validate.io-boolean-primitive":218,"validate.io-function":219,"validate.io-nonnegative-integer":220,"validate.io-number-primitive":222,"validate.io-object":251}],217:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":179,"validate.io-nonnegative-integer":180,"validate.io-number-primitive":182,"validate.io-object":206}],179:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],218:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],219:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],220:[function(require,module,exports){
-arguments[4][41][0].apply(exports,arguments)
-},{"dup":41,"validate.io-integer":221}],221:[function(require,module,exports){
+},{"dup":16}],180:[function(require,module,exports){
+arguments[4][36][0].apply(exports,arguments)
+},{"dup":36,"validate.io-integer":181}],181:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],222:[function(require,module,exports){
-arguments[4][55][0].apply(exports,arguments)
-},{"dup":55}],223:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],182:[function(require,module,exports){
+arguments[4][47][0].apply(exports,arguments)
+},{"dup":47}],183:[function(require,module,exports){
 /**
 *
 *	COMPUTE: tversky-index
@@ -75088,7 +74947,7 @@ function tversky( a, b, options ) {
 
 module.exports = tversky;
 
-},{"intersect":224,"validate.io-array":225,"validate.io-boolean":226,"validate.io-nonnegative":227,"validate.io-object":251,"validate.io-string":228}],224:[function(require,module,exports){
+},{"intersect":184,"validate.io-array":203,"validate.io-boolean":185,"validate.io-nonnegative":186,"validate.io-object":206,"validate.io-string":187}],184:[function(require,module,exports){
 module.exports = intersect;
 
 function intersect (a, b) {
@@ -75120,11 +74979,9 @@ function indexOf(arr, el) {
   return -1;
 }
 
-},{}],225:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],226:[function(require,module,exports){
-arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],227:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
+arguments[4][111][0].apply(exports,arguments)
+},{"dup":111}],186:[function(require,module,exports){
 /**
 *
 *	VALIDATE: nonnegative
@@ -75178,9 +75035,9 @@ function isNonNegative( value ) {
 
 module.exports = isNonNegative;
 
-},{"validate.io-number":250}],228:[function(require,module,exports){
-arguments[4][67][0].apply(exports,arguments)
-},{"dup":67}],229:[function(require,module,exports){
+},{"validate.io-number":205}],187:[function(require,module,exports){
+arguments[4][55][0].apply(exports,arguments)
+},{"dup":55}],188:[function(require,module,exports){
 /**
 *
 *	COMPUTE: umidmean
@@ -75283,7 +75140,7 @@ function umidmean( arr, sorted ) {
 
 module.exports = umidmean;
 
-},{}],230:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 /**
 *
 *	COMPUTE: unique
@@ -75373,7 +75230,7 @@ function unique( arr, sorted ) {
 
 module.exports = unique;
 
-},{}],231:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 /**
 *
 *	COMPUTE: unzip
@@ -75471,7 +75328,7 @@ function unzip( arr, idx ) {
 
 module.exports = unzip;
 
-},{"validate.io-array":233,"validate.io-array-array":232,"validate.io-nonnegative-integer":234}],232:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-array-array":191,"validate.io-nonnegative-integer":192}],191:[function(require,module,exports){
 /**
 *
 *	VALIDATE: array-array
@@ -75538,13 +75395,11 @@ function isArrayArray( value ) {
 
 module.exports = isArrayArray;
 
-},{"validate.io-array":233}],233:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],234:[function(require,module,exports){
-arguments[4][41][0].apply(exports,arguments)
-},{"dup":41,"validate.io-integer":235}],235:[function(require,module,exports){
+},{"validate.io-array":203}],192:[function(require,module,exports){
+arguments[4][36][0].apply(exports,arguments)
+},{"dup":36,"validate.io-integer":193}],193:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],236:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],194:[function(require,module,exports){
 /**
 *
 *	COMPUTE: variance
@@ -75657,13 +75512,9 @@ function variance( arr, opts ) {
 
 module.exports = variance;
 
-},{"validate.io-array":237,"validate.io-boolean-primitive":238,"validate.io-function":239,"validate.io-object":251}],237:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-function":195,"validate.io-object":206}],195:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],238:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],239:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18}],240:[function(require,module,exports){
+},{"dup":16}],196:[function(require,module,exports){
 /**
 *
 *	COMPUTE: wmean
@@ -75732,7 +75583,7 @@ arguments[4][18][0].apply(exports,arguments)
 	module.exports = wmean;
 
 })();
-},{}],241:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 /**
 *
 *	COMPUTE: zip
@@ -75878,11 +75729,7 @@ function zip() {
 
 module.exports = zip;
 
-},{"validate.io-array":242,"validate.io-boolean-primitive":243,"validate.io-object":251}],242:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],243:[function(require,module,exports){
-arguments[4][17][0].apply(exports,arguments)
-},{"dup":17}],244:[function(require,module,exports){
+},{"validate.io-array":203,"validate.io-boolean-primitive":204,"validate.io-object":206}],198:[function(require,module,exports){
 /**
 *
 *	UTILS: copy
@@ -76168,7 +76015,7 @@ function createCopy( val, level ) {
 
 module.exports = createCopy;
 
-},{"type-name":245,"validate.io-array":246,"validate.io-buffer":247,"validate.io-nonnegative-integer":248}],245:[function(require,module,exports){
+},{"type-name":199,"validate.io-array":203,"validate.io-buffer":200,"validate.io-nonnegative-integer":201}],199:[function(require,module,exports){
 /**
  * type-name - Just a reasonable typeof
  * 
@@ -76208,9 +76055,7 @@ function typeName (val) {
 
 module.exports = typeName;
 
-},{}],246:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],247:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
 *
 *	VALIDATE: buffer
@@ -76257,11 +76102,76 @@ function isBuffer( val ) {
 
 module.exports = isBuffer;
 
-},{}],248:[function(require,module,exports){
-arguments[4][41][0].apply(exports,arguments)
-},{"dup":41,"validate.io-integer":249}],249:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
+arguments[4][36][0].apply(exports,arguments)
+},{"dup":36,"validate.io-integer":202}],202:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
-},{"dup":11,"validate.io-number":250}],250:[function(require,module,exports){
+},{"dup":11,"validate.io-number":205}],203:[function(require,module,exports){
+'use strict';
+
+/**
+* FUNCTION: isArray( value )
+*	Validates if a value is an array.
+*
+* @param {*} value - value to be validated
+* @returns {Boolean} boolean indicating whether value is an array
+*/
+function isArray( value ) {
+	return Object.prototype.toString.call( value ) === '[object Array]';
+} // end FUNCTION isArray()
+
+// EXPORTS //
+
+module.exports = Array.isArray || isArray;
+
+},{}],204:[function(require,module,exports){
+/**
+*
+*	VALIDATE: boolean-primitive
+*
+*
+*	DESCRIPTION:
+*		- Validates if a value is a boolean primitive.
+*
+*
+*	NOTES:
+*		[1]
+*
+*
+*	TODO:
+*		[1]
+*
+*
+*	LICENSE:
+*		MIT
+*
+*	Copyright (c) 2015. Athan Reines.
+*
+*
+*	AUTHOR:
+*		Athan Reines. kgryte@gmail.com. 2015.
+*
+*/
+
+'use strict';
+
+/**
+* FUNCTION: isBoolean( value )
+*	Validates if a value is a boolean primitive.
+*
+* @param {*} value - value to be validated
+* @returns {Boolean} boolean indicating if a value is a boolean primitive
+*/
+function isBoolean( value ) {
+	return value === true || value === false;
+} // end FUNCTION isBoolean()
+
+
+// EXPORTS //
+
+module.exports = isBoolean;
+
+},{}],205:[function(require,module,exports){
 /**
 *
 *	VALIDATE: number
@@ -76308,7 +76218,7 @@ function isNumber( value ) {
 
 module.exports = isNumber;
 
-},{}],251:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /**
 *
 *	VALIDATE: object
@@ -76362,9 +76272,7 @@ function isObject( value ) {
 
 module.exports = isObject;
 
-},{"validate.io-array":252}],252:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],253:[function(require,module,exports){
+},{"validate.io-array":203}],207:[function(require,module,exports){
 /**
 *
 *	VALIDATE: string-primitive

@@ -3,10 +3,24 @@
 # VARIABLES #
 
 # Component Name:
-NAME ?= nodebook
+NAME ?= inotebook
 
 # Output filename:
 OUT ?= ./public/index.html
+
+# Component directory:
+DIR ?= ./build/components
+
+# Components:
+COMPONENTS ?= $(DIR)/polymer-editor \
+	$(DIR)/polymer-figure \
+	$(DIR)/polymer-footer \
+	$(DIR)/polymer-github-markdown \
+	$(DIR)/polymer-nav-bar \
+	$(DIR)/polymer-note \
+	$(DIR)/polymer-notebook \
+	$(DIR)/polymer-print \
+	$(DIR)/polymer-topical
 
 # Set the node.js environment to test:
 NODE_ENV ?= test
@@ -19,6 +33,7 @@ ifeq ($(KERNEL), Darwin)
 else
 	OPEN ?= xdg-open
 endif
+
 
 # NOTES #
 
@@ -33,15 +48,14 @@ NOTES ?= 'TODO|FIXME|WARNING|HACK|NOTE'
 # BOWER #
 
 BOWER ?= ./node_modules/.bin/bower
+BOWER_COMPONENTS ?= ./src/bower
 
 
 # BROWSERIFY #
 
 BROWSERIFY ?= ./node_modules/.bin/browserify
-BROWSERIFY_BUILD_IN ?= ./build/components/polymer-nav-bar/js/polymer.js
-BROWSERIFY_BUILD_OUT ?= ./build/components/polymer-nav-bar/js/script.js
-BROWSERIFY_TEST_IN ?= ./build/js/polymer.js
-BROWSERIFY_TEST_OUT ?= ./build/js/script.js
+BROWSERIFY_BUILD_IN ?= ./build/js/script.js
+BROWSERIFY_BUILD_OUT ?= ./build/js/build.js
 
 
 # VULCANIZE #
@@ -120,7 +134,7 @@ notes:
 # .PHONY: view-docs
 
 # view-docs:
-# 	open $(DOCS)
+# 	$(OPEN) $(DOCS)
 
 
 # UNIT TESTS #
@@ -146,10 +160,11 @@ test-tmp: clean-test
 	mkdir $(WCT_TMP)
 	cp -a $(WCT_SRC)/. $(WCT_TMP)
 
-test-browserify: node_modules
+# FIXME
+test-browserify: node_modules $(COMPONENTS) build-browserify-all
 	$(BROWSERIFY) \
-		$(BROWSERIFY_TEST_IN) \
-		-o $(BROWSERIFY_TEST_OUT)
+		$(BROWSERIFY_BUILD_IN) \
+		-o $(BROWSERIFY_BUILD_OUT)
 
 test-wct: node_modules test-tmp test-browserify
 	$(WCT) \
@@ -245,10 +260,8 @@ lint-jshint: node_modules
 
 .PHONY: install
 .PHONY: install-node install-bower
-.PHONY: install-browserify install-vulcanize
-.PHONY: install-browserify-logger install-browserify-topical
 
-install: install-node install-bower install-browserify install-vulcanize
+install: install-node install-bower
 
 install-node:
 	npm install
@@ -257,41 +270,13 @@ install-bower: node_modules
 	$(BOWER) install
 
 
-# TODO: remove these and consolidate with browserify target below...
-
-# Browserify:
-install-browserify: install-browserify-logger install-browserify-topical
-
-install-browserify-logger: install-browserify-bunyan
-
-install-browserify-bunyan: node_modules
-	$(BROWSERIFY) \
-		./node_modules/bunyan/lib/bunyan.js \
-		-s bunyan \
-		-o $(BROWSERIFY_OUT)/bunyan.js
-
-install-browserify-topical: node_modules
-	$(BROWSERIFY) \
-		./node_modules/topical/lib/index.js \
-		-s topical \
-		-o $(BROWSERIFY_OUT)/topical.js
-
-
-# Vulcanize:
-install-vulcanize: node_modules
-	$(VULCANIZE) \
-		$(VULCANIZE_IN) \
-		-o $(VULCANIZE_OUT) \
-		--inline
-
-
 
 # BUILD #
 
 .PHONY: build
 .PHONY: build-tmp
 
-build: node_modules build-tmp browserify vulcanize
+build: node_modules $(BOWER_COMPONENTS) build-tmp build-browserify build-vulcanize
 
 build-tmp: clean-build
 	mkdir build
@@ -300,51 +285,22 @@ build-tmp: clean-build
 
 # BROWSERIFY #
 
-.PHONY: browserify
+.PHONY: build-browserify
+.PHONY: build-browserify-all
 
-xbrowserify: node_modules
+build-browserify: node_modules $(COMPONENTS) build-browserify-all
 	$(BROWSERIFY) \
 		$(BROWSERIFY_BUILD_IN) \
 		-o $(BROWSERIFY_BUILD_OUT)
 
-browserify: node_modules
-	$(BROWSERIFY) \
-		./build/components/polymer-nav-bar/js/polymer.js \
-		-o ./build/components/polymer-nav-bar/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-editor/js/polymer.js \
-		-o ./build/components/polymer-editor/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-note/js/polymer.js \
-		-o ./build/components/polymer-note/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-notebook/js/polymer.js \
-		-o ./build/components/polymer-notebook/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-print/js/polymer.js \
-		-o ./build/components/polymer-print/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-github-markdown/js/polymer.js \
-		-o ./build/components/polymer-github-markdown/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-figure/js/polymer.js \
-		-o ./build/components/polymer-figure/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-footer/js/polymer.js \
-		-o ./build/components/polymer-footer/js/script.js
-	$(BROWSERIFY) \
-		./build/components/polymer-topical/js/polymer.js \
-		-o ./build/components/polymer-topical/js/script.js
-	$(BROWSERIFY) \
-		./build/js/script.js \
-		-o ./build/js/build.js
+build-browserify-all: ; $(foreach dir, $(COMPONENTS), $(BROWSERIFY) $(dir)/js/polymer.js -o $(dir)/js/script.js &&) :
 
 
 # VULCANIZE #
 
-.PHONY: vulcanize
+.PHONY: build-vulcanize
 
-vulcanize: node_modules
+build-vulcanize: node_modules $(COMPONENTS)
 	$(VULCANIZE) \
 		$(VULCANIZE_BUILD_IN) \
 		--config $(VULCANIZE_CONF) \
@@ -371,4 +327,4 @@ clean-node:
 	rm -rf node_modules
 
 clean-bower:
-	rm -rf ./src/bower
+	rm -rf $(BOWER_COMPONENTS)
