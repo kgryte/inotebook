@@ -92,7 +92,7 @@ TODO
 34. fig component should have a chart type attr
 	-	dynamically create the desired chart type
 35. reserved words
-	-	table, plot, help
+	-	table, plot, help, load
 36. minify during build
 37. search (ES)
 	-	could perform in browser via worker
@@ -110,7 +110,8 @@ TODO
 	-	this could be tricky, but the granularity could be awesome
 46. keyboard shortcuts for creating new notes (taking into acct note mode)
 	-	will need to take into acct editor key bindings
-47. 
+47. [node-repl](https://github.com/maxogden/node-repl)
+48. 
 
 
 

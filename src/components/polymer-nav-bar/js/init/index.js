@@ -1,31 +1,3 @@
-/**
-*
-*	FUNCTION: init
-*
-*
-*	DESCRIPTION:
-*		- Performs element initialization.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 /* global document */
 'use strict';
 

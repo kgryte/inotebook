@@ -1,31 +1,3 @@
-/**
-*
-*	MIDDLEWARE: validate
-*
-*
-*	DESCRIPTION:
-*		- Validates a log level request.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //
@@ -59,7 +31,6 @@ function validLevel( value ) {
 	if ( typeof value === 'string' ) {
 		return LEVELS.indexOf( value ) !== -1;
 	}
-	// TODO: determine if integer check is needed
 	return isNumber( value );
 } // end FUNCTION validLevel()
 

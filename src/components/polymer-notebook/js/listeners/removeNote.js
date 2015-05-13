@@ -1,31 +1,3 @@
-/**
-*
-*	FUNCTION: onRemoveNote
-*
-*
-*	DESCRIPTION:
-*		- Event listener invoked when a note emits an event to remove itself from the list of notes.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 /**

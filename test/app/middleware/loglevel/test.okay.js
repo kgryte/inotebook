@@ -46,9 +46,9 @@ describe( 'app/middleware/loglevel/okay', function tests() {
 		expect( okay ).to.be.a( 'function' );
 	});
 
-	it( 'should return a 200 status', function test() {
+	it( 'should return a 204 status', function test() {
 		okay( request, response, next );
-		assert.strictEqual( response._status, 200 );
+		assert.strictEqual( response._status, 204 );
 	});
 
 	it( 'should invoke a callback after sending the response', function test( done ) {

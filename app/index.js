@@ -1,100 +1,26 @@
-/**
-*
-*	APP
-*
-*
-*	DESCRIPTION:
-*		- Returns a method for creating and booting an express application.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //
 
 var express = require( 'express' ),
 	bootable = require( 'bootable' ),
-	server = require( 'server' ),
+	config = require( 'config' ),
 	logger = require( 'logger' ),
-	middleware = require( './middleware' );
-
-
-// VARIABLES //
-
-var PROTOCOL = 'http',
-	PORT = 7337;
+	isObject = require( 'validate.io-object' ),
+	middleware = require( './middleware' ),
+	server = require( './server' );
 
 
 // FUNCTIONS //
 
 /**
-* FUNCTION: onError( error )
-*	Server error event handler.
+* FUNCTIONS: onBoot( [clbk] )
+*	Returns a callback to be invoked after boot completion.
 *
 * @private
-* @param {Error} error - server error
+* @param {Function} [clbk] - optional callback
 */
-function onError( error ) {
-	if ( error.code === 'EADDRINUSE' ) {
-		logger.info( 'Server address already in use.' );
-	}
-	logger.info({ 'error': error });
-	return process.exit( -1 );
-} // end FUNCTION onError()
-
-/**
-* FUNCTION: onListen()
-*	Callback invoked once a server is listening and ready to handle requests.
-*
-* @private
-*/
-function onListen() {
-	logger.info( PROTOCOL.toUpperCase() + ' server initialized. Server is listening for requests on port: ' + PORT + '.' );
-} // end FUNCTION onListen()
-
-
-// APP //
-
-/**
-* FUNCTION: boot( [clbk] )
-*	Defines the boot order for an express application. When invoked, creates and boots the application.
-*
-* @param {Function} [clbk] - callback to invoke after successfully booting the application
-* @returns {Function} express application
-*/
-function boot( clbk ) {
-	// [0] Create the application...
-	var app = bootable( express() );
-
-	// [1] Bind application middleware...
-	app.phase( middleware );
-
-	// [2] Create the server...
-	app.phase( server );
-
-	// [3] Boot the application...
-	app.boot( onBoot );
-
-	return app;
-
+function onBoot( clbk ) {
 	/**
 	* FUNCTION: onBoot( [error] )
 	*	Callback invoked after application boot sequence completion.
@@ -102,17 +28,83 @@ function boot( clbk ) {
 	* @private
 	* @param {Error} [error] - error object
 	*/
-	function onBoot( error ) {
+	return function onBoot( error ) {
 		if ( error ) {
 			logger.info({ 'error': error });
 			return process.exit( -1 );
 		}
-		app.server.on( 'error', onError );
-		app.server.listen( PORT, onListen );
 		if ( clbk ) {
 			clbk();
 		}
-	} // end FUNCTION onBoot()
+	}; // end FUNCTION onBoot()
+} // end FUNCTION onBoot()
+
+
+// BOOT //
+
+/**
+* FUNCTION: boot( [options[, clbk]] )
+*	Defines the boot order for an express application. When invoked, creates and boots the application.
+*
+* @param {Object} [options] - boot options
+* @param {Function} [clbk] - callback to invoke after successfully booting the application
+* @returns {Function} express application
+*/
+function boot( options, clbk ) {
+	var nargs = arguments.length,
+		opts,
+		done,
+		app;
+
+	if ( nargs === 1 ) {
+		if ( typeof options === 'function' ) {
+			done = options;
+			opts = {};
+		}
+		else if ( isObject( options ) ) {
+			opts = options;
+		}
+		else {
+			throw new TypeError( 'boot()::invalid input argument. Must provide either an options object or a callback function. Value: `' + options + '`.' );
+		}
+	}
+	else if ( nargs > 1 ) {
+		if ( !isObject( options ) ) {
+			throw new TypeError( 'boot()::invalid input argument. Options argument must be an object. Value: `' + options + '`.' );
+		} else {
+			opts = options;
+		}
+		if ( typeof clbk !== 'function' ) {
+			throw new TypeError( 'boot()::invalid input argument. Callback must be a function. Value: `' + clbk + '`.' );
+		} else {
+			done = clbk;
+		}
+	}
+	else {
+		opts = {};
+	}
+	// [0] Update application settings...
+	config.merge( opts );
+
+	// [1] Set the application log level:
+	logger.levels( 'main', config.get( 'logger.level' ) );
+
+	// [2] Log the current run-time environment:
+	logger.info( 'Environment configuration: %s.', config.get( 'env' ) );
+
+	// [3] Create the application...
+	app = bootable( express() );
+
+	// [4] Bind application middleware...
+	app.phase( middleware );
+
+	// [5] Create the server...
+	app.phase( server );
+
+	// [6] Boot the application...
+	app.boot( onBoot( done ) );
+
+	return app;
 } // end FUNCTION boot()
 
 

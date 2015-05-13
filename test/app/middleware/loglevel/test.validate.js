@@ -32,7 +32,7 @@ describe( 'app/middleware/loglevel/validate', function tests() {
 		}
 	};
 	response = {};
-	next = function(){};
+	next = function next(){};
 
 	beforeEach( function() {
 		request.body = {
@@ -48,7 +48,7 @@ describe( 'app/middleware/loglevel/validate', function tests() {
 	});
 
 	it( 'should invoke a callback after successfully validating', function test( done ) {
-		next = function( error ) {
+		next = function next( error ) {
 			if ( error ) {
 				assert.notOk( true );
 			} else {
@@ -60,21 +60,38 @@ describe( 'app/middleware/loglevel/validate', function tests() {
 	});
 
 	it( 'should return an error if provided an invalid level parameter', function test( done ) {
-		next = function( error ) {
+		var values, count;
+
+		values = [
+			null,
+			undefined,
+			NaN,
+			true,
+			{},
+			function(){},
+			[]
+		];
+
+		next = function next( error ) {
 			if ( error ) {
 				assert.ok( true );
 			} else {
 				assert.notOk( true );
 			}
-			done();
+			if ( ++count === values.length ) {
+				done();
+			}
 		};
-		// TODO: other values!!!!
-		request.body.level = NaN;
-		validate( request, response, next );
+
+		count = 0;
+		for ( var i = 0; i < values.length; i++ ) {
+			request.body.level = values[ i ];
+			validate( request, response, next );
+		}
 	});
 
 	it( 'should return an error if provided an unrecognized level string', function test( done ) {
-		next = function( error ) {
+		next = function next( error ) {
 			if ( error ) {
 				assert.ok( true );
 			} else {

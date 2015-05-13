@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+'use strict';
+
+// MODULES //
+
+var fs = require( 'fs' ),
+	path = require( 'path' ),
+	pkginfo = require( 'pkginfo' ),
+	parseArgs = require( 'minimist' ),
+	opts = require( './opts.json' ),
+	validate = require( './validate.js' );
+
+
+// INIT //
+
+process.stdout.on( 'error', process.exit );
+
+
+// PACKAGE INFO //
+
+var pkg = pkginfo.read( require.main );
+process.title = pkg.package.name;
+
+
+// ARGUMENTS //
+
+var args = parseArgs( process.argv.slice( 2 ), opts );
+
+
+// HELP //
+
+function onClose() {
+	process.exit( 1 );
+}
+
+if ( args.help ) {
+	fs.createReadStream( path.join( __dirname, 'usage.txt' ) )
+		.pipe( process.stdout )
+		.on( 'close', onClose );
+    return;
+}
+
+
+// VERSION //
+
+if ( args.version ) {
+	console.log( pkg.package.version );
+	return;
+}
+
+
+// APPLICATION //
+
+require( './../app' )( validate( args ) );

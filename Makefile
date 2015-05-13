@@ -11,6 +11,14 @@ OUT ?= ./public/index.html
 # Set the node.js environment to test:
 NODE_ENV ?= test
 
+# Kernel name:
+KERNEL ?= $(shell uname -s)
+
+ifeq ($(KERNEL), Darwin)
+	OPEN ?= open
+else
+	OPEN ?= xdg-open
+endif
 
 # NOTES #
 
@@ -206,7 +214,7 @@ view-server-cov: view-istanbul-report
 view-ui-cov: view-istanbul-report
 
 view-istanbul-report:
-	open $(ISTANBUL_HTML_REPORT_PATH)
+	$(OPEN) $(ISTANBUL_HTML_REPORT_PATH)
 
 
 
@@ -363,4 +371,4 @@ clean-node:
 	rm -rf node_modules
 
 clean-bower:
-	rm -rf bower
+	rm -rf ./src/bower

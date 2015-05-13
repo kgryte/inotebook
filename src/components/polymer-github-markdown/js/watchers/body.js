@@ -1,36 +1,8 @@
-/**
-*
-*	FUNCTION: bodyChanged
-*
-*
-*	DESCRIPTION:
-*		- Event handler for changes to a body attribute.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //
 
-var isString = require( 'validate.io-string' );
+var isString = require( 'validate.io-string-primitive' );
 
 
 // BODY CHANGED //

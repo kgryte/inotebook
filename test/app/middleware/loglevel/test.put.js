@@ -20,7 +20,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'app/middleware/loglevel/post', function tests() {
+describe( 'app/middleware/loglevel/put', function tests() {
 
 	it( 'should export an array of middleware', function test() {
 		expect( mw ).to.be.an( 'array' );

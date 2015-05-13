@@ -1,36 +1,8 @@
-/**
-*
-*	FUNCTION: modeChanged
-*
-*
-*	DESCRIPTION:
-*		- Event handler for changes to the editor mode.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //
 
-var isString = require( 'validate.io-string' );
+var isString = require( 'validate.io-string-primitive' );
 
 
 // VARIABLES //

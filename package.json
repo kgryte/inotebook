@@ -13,10 +13,10 @@
     }
   ],
   "bin": {
-    "inotebook": "./bin/server.js"
+    "inotebook": "./bin/cli"
   },
   "scripts": {
-    "start": "./bin/server.js | ./node_modules/.bin/bunyan",
+    "start": "node ./bin/cli | ./node_modules/.bin/bunyan",
     "test": "make test",
     "test-ui": "make test-ui",
     "test-server": "make test-server",
@@ -25,17 +25,17 @@
     "test-server-cov": "make test-server-cov",
     "coveralls": "make coveralls"
   },
-  "main": "",
+  "main": "./app",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kgryte/nodebook.git"
+    "url": "git://github.com/kgryte/inotebook.git"
   },
   "keywords": [
     "polymer",
     "web component"
   ],
   "bugs": {
-    "url": "https://github.com/kgryte/nodebook/issues"
+    "url": "https://github.com/kgryte/inotebook/issues"
   },
   "dependencies": {
     "acorn": "^0.12.0",
@@ -44,21 +44,26 @@
     "brace": "^0.5.0",
     "bunyan": "^1.3.4",
     "compression": "^1.4.1",
-    "compute.io": "^0.103.0",
+    "compute.io": "^0.106.0",
     "connect-middleware-monitor": "^1.0.3",
     "express": "^4.12.2",
     "github-markdown-css": "^2.x.x",
     "markdown-it": "^4.0.1",
+    "minimist": "^1.1.1",
     "monitor-plugin-os": "^1.0.0",
     "monitor-plugin-process": "^1.0.0",
     "node-uuid": "^1.4.3",
     "pkginfo": "^0.3.0",
     "response-time": "^2.3.0",
     "topical": "^1.1.1",
-    "validate.io-array": "^1.0.3",
+    "utils-copy": "^1.0.0",
+    "utils-merge2": "^1.0.0",
+    "validate.io-array": "^1.0.5",
     "validate.io-boolean-primitive": "^1.0.0",
     "validate.io-number": "^1.0.3",
-    "validate.io-string": "^1.0.2"
+    "validate.io-object": "^1.0.3",
+    "validate.io-string-primitive": "^1.0.0",
+    "validate.io-string-primitive-array": "^1.0.0"
   },
   "devDependencies": {
     "bower": "^1.3.12",
@@ -70,6 +75,7 @@
     "jshint-stylish": "^1.0.0",
     "mocha": "2.x.x",
     "proxyquire": "^1.4.0",
+    "request": "^2.54.0",
     "vulcanize": "^0.7.9",
     "wct-local": "^1.2.0",
     "wct-sauce": "^1.2.0",

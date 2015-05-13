@@ -1,31 +1,3 @@
-/**
-*
-*	MIDDLEWARE: finish
-*
-*
-*	DESCRIPTION:
-*		- Performs tasks at the end of a request.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //

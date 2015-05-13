@@ -1,31 +1,3 @@
-/**
-*
-*	MIDDLEWARE: monitor
-*
-*
-*	DESCRIPTION:
-*		- Middleware to monitor application performance.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MODULES //

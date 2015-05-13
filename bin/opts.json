@@ -1,0 +1,24 @@
+{
+	"string": [
+		"port",
+		"key",
+		"cert",
+		"loglevel"
+	],
+	"boolean": [
+		"help",
+		"version",
+		"ssl"
+	],
+	"alias": {
+		"help": [
+			"h"
+		],
+		"version": [
+			"V"
+		],
+		"port": [
+			"p"
+		]
+	}
+}

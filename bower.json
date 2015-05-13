@@ -1,5 +1,5 @@
 {
-	"name": "nodebook",
+	"name": "inotebook",
 	"version": "0.0.0",
 	"description": "",
 	"authors": [
@@ -11,7 +11,7 @@
 	"main": "",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/kgryte/nodebook"
+		"url": "git://github.com/kgryte/inotebook"
 	},
 	"keywords": [
 		"polymer",

@@ -1,31 +1,3 @@
-/**
-*
-*	ROUTES: PUT /loglevel
-*
-*
-*	DESCRIPTION:
-*		- Route for setting the runtime log level.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2015. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2015.
-*
-*/
-
 'use strict';
 
 // MIDDLEWARE //
