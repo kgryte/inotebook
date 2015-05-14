@@ -6,18 +6,34 @@ TODO
 	-	editor
 	-	notebook
 	-	...
-2. 
+2. validate.io mods to window
+	-	requires rewrite of main lib
 3. README
 4. ability to require
-	-	contact server
-	-	spawn and run npm install
-	-	browserify
-	-	return
+	- 	make `requirify` and event emitter
+		-	useful for progress indicators; e.g., when the module has been installed and required, in addition to bubbling errors
+		-	error should be linked to the module name which was requested
 	- 	will need a way to keep track of these separate to actual package.json
 		-	in inb file, have imported modules
+		-	will need to keep in sync with `package.json` used for installing `node_modules`
 		-	when load, these are downloaded, browserified, and shipped to the browser along with the notebook
-5. 
-6. 
+	-	store each requested bundle on the client (local storage, etc)
+	-	when a different note requires a module
+		-	first check if already in workspace
+		-	next check if cache in client db
+		-	then request from server
+5. demo notebook should come from json stored on server
+	-	currently hard coded in a client-side file
+	-	sequence
+		-	load base application
+		-	make a request to a `GET /notebook` endpoint
+		-	load notebook and render results
+	-	what is not notebook currently exists in a directory?
+		-	present a navigation page?
+		-	is that really needed, or just a drop down to load a notebook?
+6. cache browserified results to skip the `npm install` and `browserify` steps
+	-	just return the bundle
+	-	
 7. 
 8. 
 9. `/loglevel` route
@@ -93,6 +109,11 @@ TODO
 	-	plot
 	-	help
 	-	load
+	-	require
+	-	
+	-	warning similar to MATLAB when a user reassigns a reserved word => or just throw!
+		-	ability to restore if mistake
+		-	requires, say, a duplicate assignment on window object `__table__`
 36. minify during build
 37. search (ES)
 	-	could perform in browser via worker
@@ -111,7 +132,44 @@ TODO
 46. keyboard shortcuts for creating new notes (taking into acct note mode)
 	-	will need to take into acct editor key bindings
 47. [node-repl](https://github.com/maxogden/node-repl)
-48. 
+48. list of requireable modules
+	-	UI element; e.g., side bar showing the list
+49. 
+
+
+
+### Mods
+
+1. module manager (manage cache)
+2. inotebook init
+3. inotebook publish
+
+
+
+### Other
+
+1. inotebook init
+	-	check if existing `*.inb`
+		-	if so, exit
+	-	notebook name
+	-	notebook desc
+	-	author name
+	-	license (use canonical license options)
+	-	repo
+	-	check if `package.json`
+		-	if not, create a new one (where deps are stored)
+	-	
+2. inotebook publish
+	-	use npm
+	-	prefix with `inotebooks-` or `inb-`
+	- 	if `--access` flag, then as scoped package
+3. how does installing a notebook work?
+	-	what is exported/required?
+	-	maybe it is an executable which requires the config and fires up the inotebook server to serve the inotebook contents
+	-	if installed globally, would provide a terminal command
+	-	if installed locally, would need to `node_modules/.bin/<name>`
+	-	notebook cmd combo of prefix `inb-` with notebook name; e.g., `inb-linear-regression`
+4. 
 
 
 
@@ -160,7 +218,9 @@ TODO
 
 #### Server
 
-1. 
+1. require route
+2. app fail when run in app directory
+3. 
 
 
 

@@ -19,7 +19,8 @@ var express = require( 'express' ),
 
 // REQUEST HANDLERS //
 
-var monitor = require( './monitor' ),
+var requirify = require( './require' ),
+	monitor = require( './monitor' ),
 	logs = require( './logs' ),
 	loglevel = require( './loglevel' );
 
@@ -57,10 +58,14 @@ function middleware( next ) {
 	// Perform initial start tasks:
 	app.use( start );
 
+	// Disable `X-Powered-By` header:
+	app.disable( 'x-powered-by' );
 
 	/**
 	* Routes.
 	*/
+
+	app.post( '/require', requirify );
 
 	app.get( '/monitor', monitor );
 

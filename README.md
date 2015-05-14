@@ -27,10 +27,15 @@ iNotebook
 $ git clone https://github.com/kgryte/inotebook.git
 ```
 
-The application runs on [Node.js](https://nodejs.org/). Before running the application, install [node modules](https://www.npmjs.org/) and [bower components](http://bower.io/) and run the build step.
+The application runs on [Node.js](https://nodejs.org/). Before running the application, install [node modules](https://www.npmjs.org/) and [bower components](http://bower.io/)
 
 ``` bash
 $ make install
+```
+
+and run the build step
+
+``` bash
 $ make build
 ```
 

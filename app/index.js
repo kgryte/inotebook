@@ -6,6 +6,7 @@ var express = require( 'express' ),
 	bootable = require( 'bootable' ),
 	config = require( 'config' ),
 	logger = require( 'logger' ),
+	root = require( 'root' ),
 	isObject = require( 'validate.io-object' ),
 	middleware = require( './middleware' ),
 	server = require( './server' );
@@ -52,10 +53,14 @@ function onBoot( clbk ) {
 */
 function boot( options, clbk ) {
 	var nargs = arguments.length,
+		cwd = process.cwd(),
 		opts,
 		done,
 		app;
 
+	if ( cwd.substr( 0, root.length ) === root ) {
+		throw new Error( 'boot()::not permitted. Cannot boot the application from this directory. The application should be booted from a directory separate to the application directory. This can be an iNotebook directory or even an empty directory. Protected directory: `' + root + '`.' );
+	}
 	if ( nargs === 1 ) {
 		if ( typeof options === 'function' ) {
 			done = options;

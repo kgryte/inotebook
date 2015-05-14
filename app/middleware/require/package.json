@@ -1,0 +1,36 @@
+{
+	"name": "inotebook",
+	"version": "0.0.0",
+	"description": "iNotebook.",
+	"author": {
+		"name": "",
+		"email": ""
+	},
+	"contributors": [
+		{
+			"name": "",
+			"email": ""
+		}
+	],
+	"scripts": {},
+	"main": "",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/"
+	},
+	"keywords": [
+		"inotebook",
+		"notebook"
+	],
+	"bugs": {
+		"url": "https://github.com/"
+	},
+	"dependencies": {},
+	"devDependencies": {},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/MIT"
+		}
+	]
+}
