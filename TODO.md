@@ -34,7 +34,8 @@ TODO
 6. cache browserified results to skip the `npm install` and `browserify` steps
 	-	just return the bundle
 	-	
-7. 
+7. check that a 204 status response has a response body!!!
+	-	if not, need to update README and app generator boilerplate
 8. 
 9. `/loglevel` route
 	-	allow for setting level for specific channels, multiple channels, etc. --> body would be an array; loop through array and set stream levels; '*' would indicate all streams.

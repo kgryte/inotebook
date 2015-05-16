@@ -74,13 +74,17 @@ function check( request, response, next ) {
 			return next( err );
 		}
 		// Only install modules not already installed...
-		installed = installed.dependencies;
-		len = list.length;
-		mods = [];
-		for ( i = 0; i < len; i++ ) {
-			if ( !installed.hasOwnProperty( list[ i ] ) ) {
-				mods.push( list[ i ] );
+		if ( installed.hasOwnProperty( 'dependencies' ) ) {
+			installed = installed.dependencies;
+			len = list.length;
+			mods = [];
+			for ( i = 0; i < len; i++ ) {
+				if ( !installed.hasOwnProperty( list[ i ] ) ) {
+					mods.push( list[ i ] );
+				}
 			}
+		} else {
+			mods = list;
 		}
 		request.locals.modules = mods;
 		next();
